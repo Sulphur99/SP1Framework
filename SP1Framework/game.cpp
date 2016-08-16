@@ -123,6 +123,8 @@ void render()
             break;
         case S_GAME: renderGame();
             break;
+		case S_ROOM1: renderGame1();
+			break;
     }
     renderFramerate();  // renders debug information, frame rate, elapsed time, etc
     renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
@@ -132,6 +134,11 @@ void splashScreenWait()    // waits for time to pass in splash screen
 {
     if (g_dElapsedTime > 3.0) // wait for 3 seconds to switch to game mode, else do nothing
         g_eGameState = S_GAME;
+}
+
+void roomChange()
+{
+	//if ()
 }
 
 void gameplay()            // gameplay logic
@@ -218,6 +225,12 @@ void renderGame()
     renderCharacter();  // renders the character into the buffer
 }
 
+void renderGame1()
+{
+	renderMap1();
+	renderCharacter();
+}
+
 void renderMap()
 {
     // Set up sample colours, and output shadings
@@ -235,6 +248,13 @@ void renderMap()
         g_Console.writeToBuffer(c, " °±²Û", colors[i]);
     }
 }
+
+void renderMap1()
+{
+
+}
+
+
 
 void renderCharacter()
 {
