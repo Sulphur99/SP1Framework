@@ -186,6 +186,16 @@ void moveCharacter()
         g_sChar.m_bActive = !g_sChar.m_bActive;
         bSomethingHappened = true;
     }
+	if (g_sChar.m_cLocation.X == 75 && g_sChar.m_cLocation.Y == 10)
+	{
+		g_sChar.m_cLocation.X = 6;
+		g_sChar.m_cLocation.Y = 10;
+	}
+	if (g_sChar.m_cLocation.X == 5 && g_sChar.m_cLocation.Y == 10)
+	{
+		g_sChar.m_cLocation.X = 74;
+		g_sChar.m_cLocation.Y = 10;
+	}
 
     if (bSomethingHappened)
     {
