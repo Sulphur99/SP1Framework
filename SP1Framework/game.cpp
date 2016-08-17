@@ -138,7 +138,8 @@ void splashScreenWait()    // waits for time to pass in splash screen
 
 void roomChange()
 {
-	//if ()
+	if (g_sChar.m_cLocation.X > 90)
+		g_eGameState = S_ROOM1;
 }
 
 void gameplay()            // gameplay logic
