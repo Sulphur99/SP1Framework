@@ -135,12 +135,6 @@ void splashScreenWait()    // waits for time to pass in splash screen
         g_eGameState = S_GAME;
 }
 
-void roomChange()
-{
-	if (g_sChar.m_cLocation.X > 90)
-		g_eGameState = S_ROOM1;
-}
-
 void gameplay()            // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
@@ -179,17 +173,18 @@ void moveCharacter()
         //Beep(1440, 30);
         g_sChar.m_cLocation.X++;
         bSomethingHappened = true;
-    }
+	}
+	
     if (g_abKeyPressed[K_SPACE])
     {
         g_sChar.m_bActive = !g_sChar.m_bActive;
         bSomethingHappened = true;
     }
 	if (g_sChar.m_cLocation.X == 79 && g_sChar.m_cLocation.Y == 10)
-	{
-		g_sChar.m_cLocation.X = 1;
-		g_sChar.m_cLocation.Y = 10;
-	}
+		{
+			g_sChar.m_cLocation.X = 1;
+			g_sChar.m_cLocation.Y = 10;
+		}
 	if (g_sChar.m_cLocation.X == 0 && g_sChar.m_cLocation.Y == 10)
 	{
 		g_sChar.m_cLocation.X = 78;
@@ -200,21 +195,12 @@ void moveCharacter()
 		g_sChar.m_cLocation.X = 39;
 		g_sChar.m_cLocation.Y = 18;
 	}
-	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 1)
-	{
-		g_sChar.m_cLocation.X = 40;
-		g_sChar.m_cLocation.Y = 18;
-	}
-	if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 19)
-	{
-		g_sChar.m_cLocation.X = 39;
-		g_sChar.m_cLocation.Y = 2;
-	}
 	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 19)
 	{
 		g_sChar.m_cLocation.X = 40;
 		g_sChar.m_cLocation.Y = 2;
 	}
+
     if (bSomethingHappened)
     {
         // set the bounce time to some time in the future to prevent accidental triggers
