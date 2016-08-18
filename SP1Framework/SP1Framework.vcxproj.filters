@@ -33,10 +33,14 @@
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Mapping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="collision.cpp">
+=======
+    <ClCompile Include="Room1.cpp">
+>>>>>>> 8c829697362660d19c63c67a08658b228ea075d4
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,10 +54,14 @@
     <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Mapping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="collision.h">
+=======
+    <ClInclude Include="Room1.h">
+>>>>>>> 8c829697362660d19c63c67a08658b228ea075d4
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

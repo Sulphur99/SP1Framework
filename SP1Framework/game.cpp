@@ -135,6 +135,15 @@ void splashScreenWait()    // waits for time to pass in splash screen
         g_eGameState = S_GAME;
 }
 
+<<<<<<< HEAD
+=======
+void roomChange()
+{
+	if (g_sChar.m_cLocation.X > 90)
+		g_eGameState = S_ROOM1;
+}
+
+>>>>>>> 8c829697362660d19c63c67a08658b228ea075d4
 void gameplay()            // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
@@ -179,6 +188,16 @@ void moveCharacter()
         g_sChar.m_bActive = !g_sChar.m_bActive;
         bSomethingHappened = true;
     }
+	if (g_sChar.m_cLocation.X == 75 && g_sChar.m_cLocation.Y == 10)
+	{
+		g_sChar.m_cLocation.X = 6;
+		g_sChar.m_cLocation.Y = 10;
+	}
+	if (g_sChar.m_cLocation.X == 5 && g_sChar.m_cLocation.Y == 10)
+	{
+		g_sChar.m_cLocation.X = 74;
+		g_sChar.m_cLocation.Y = 10;
+	}
 
     if (bSomethingHappened)
     {
