@@ -15,6 +15,7 @@ bool    g_abKeyPressed[K_COUNT];
 SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN;
 double  g_dBounceTime; // this is to prevent key bouncing, so we won't trigger keypresses more than once
+int g_level = 1;
 
 // Console object
 Console g_Console(80, 25, "SP1 Framework");
@@ -123,8 +124,6 @@ void render()
             break;
         case S_GAME: renderGame();
             break;
-		case S_ROOM1: renderGame1();
-			break;
     }
     renderFramerate();  // renders debug information, frame rate, elapsed time, etc
     renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
@@ -134,11 +133,6 @@ void splashScreenWait()    // waits for time to pass in splash screen
 {
     if (g_dElapsedTime > 3.0) // wait for 3 seconds to switch to game mode, else do nothing
         g_eGameState = S_GAME;
-}
-
-void roomChange()
-{
-	//if ()
 }
 
 void gameplay()            // gameplay logic
@@ -156,25 +150,25 @@ void moveCharacter()
 
     // Updating the location of the character based on the key press
     // providing a beep sound whenver we shift the character
-    if (g_abKeyPressed[K_UP] && g_sChar.m_cLocation.Y > 0)
+    if (g_abKeyPressed[K_UP] && g_sChar.m_cLocation.Y > 0 && collision(g_level))
     {
         //Beep(1440, 30);
         g_sChar.m_cLocation.Y--;
         bSomethingHappened = true;
     }
-    if (g_abKeyPressed[K_LEFT] && g_sChar.m_cLocation.X > 0)
+    if (g_abKeyPressed[K_LEFT] && g_sChar.m_cLocation.X > 0 && collision(g_level))
     {
         //Beep(1440, 30);
         g_sChar.m_cLocation.X--;
         bSomethingHappened = true;
     }
-    if (g_abKeyPressed[K_DOWN] && g_sChar.m_cLocation.Y < g_Console.getConsoleSize().Y - 1)
+    if (g_abKeyPressed[K_DOWN] && g_sChar.m_cLocation.Y < g_Console.getConsoleSize().Y - 1 && collision(g_level))
     {
         //Beep(1440, 30);
         g_sChar.m_cLocation.Y++;
         bSomethingHappened = true;
     }
-    if (g_abKeyPressed[K_RIGHT] && g_sChar.m_cLocation.X < g_Console.getConsoleSize().X - 1)
+    if (g_abKeyPressed[K_RIGHT] && g_sChar.m_cLocation.X < g_Console.getConsoleSize().X - 1 && collision(g_level))
     {
         //Beep(1440, 30);
         g_sChar.m_cLocation.X++;
@@ -225,12 +219,6 @@ void renderGame()
     renderCharacter();  // renders the character into the buffer
 }
 
-void renderGame1()
-{
-	renderMap1();
-	renderCharacter();
-}
-
 void renderMap()
 {
     // Set up sample colours, and output shadings
@@ -239,22 +227,19 @@ void renderMap()
         0xA1, 0xB2, 0xC3, 0xD4, 0xE5, 0xF6
     };
 
-    COORD c;
+	char** grid = new char*[100];
+		grid = Mapping(grid, g_level);
+		print_map(grid);
+
+    /*COORD c;
     for (int i = 0; i < 12; ++i)
     {
         c.X = 5 * i;
         c.Y = i + 1;
         colour(colors[i]);
         g_Console.writeToBuffer(c, " °±²Û", colors[i]);
-    }
+    }*/
 }
-
-void renderMap1()
-{
-
-}
-
-
 
 void renderCharacter()
 {
