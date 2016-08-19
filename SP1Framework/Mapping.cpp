@@ -2,12 +2,18 @@
 
 extern Console g_Console;
 
-char** Mapping(char** grid, int level)
+char** Mapping(char** grid, int g_level)
 {
 	ifstream read;
 
-	if (level == 1)
+	if (g_level == 1)
 	{
+		clearScreen();
+		read.open("Level1.txt");
+	}
+	if (g_level == 2)
+	{
+		clearScreen();
 		read.open("Level2.txt");
 	}
 

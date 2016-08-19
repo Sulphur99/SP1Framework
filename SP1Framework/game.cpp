@@ -16,6 +16,7 @@ SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN;
 double  g_dBounceTime; // this is to prevent key bouncing, so we won't trigger keypresses more than once
 int g_level = 1;
+int monkey = 0;
 
 // Console object
 Console g_Console(80, 25, "SP1 Framework");
@@ -105,6 +106,7 @@ void update(double dt)
             break;
         case S_GAME: gameplay(); // gameplay logic when we are in the game
             break;
+		case S_LEVEL2: gameplay2();
     }
 }
 //--------------------------------------------------------------
@@ -124,6 +126,7 @@ void render()
             break;
         case S_GAME: renderGame();
             break;
+		case S_LEVEL2: renderGame();
     }
     renderFramerate();  // renders debug information, frame rate, elapsed time, etc
     renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
@@ -131,15 +134,34 @@ void render()
 
 void splashScreenWait()    // waits for time to pass in splash screen
 {
-    if (g_dElapsedTime > 3.0) // wait for 3 seconds to switch to game mode, else do nothing
-        g_eGameState = S_GAME;
+	if (g_dElapsedTime > 3.0)
+	{// wait for 3 seconds to switch to game mode, else do nothing
+		g_eGameState = S_GAME;
+	}
 }
 
 void gameplay()            // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
     moveCharacter();    // moves the character, collision detection, physics, etc
-                        // sound can be played here too.
+						// sound can be played here too.
+	if (monkey == 1)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL2;
+		g_level = 2;
+	}                    
+}
+
+void gameplay2()            // gameplay logic
+{
+	processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
+	moveCharacter();    // moves the character, collision detection, physics, etc
+						// sound can be played here too.
+	/*if (g_sChar.m_cLocation.X == 79 && g_sChar.m_cLocation.Y == 10)
+	{
+		g_eGameState = S_LEVEL2;
+	}*/
 }
 
 void moveCharacter()
@@ -180,27 +202,37 @@ void moveCharacter()
         g_sChar.m_bActive = !g_sChar.m_bActive;
         bSomethingHappened = true;
     }
-	if (g_sChar.m_cLocation.X == 79 && g_sChar.m_cLocation.Y == 10)
+	if (g_sChar.m_cLocation.X == 79 && g_sChar.m_cLocation.Y == 10)//right to left
 		{
+			monkey += 1;
 			g_sChar.m_cLocation.X = 1;
 			g_sChar.m_cLocation.Y = 10;
 		}
-	if (g_sChar.m_cLocation.X == 0 && g_sChar.m_cLocation.Y == 10)
+	if (g_sChar.m_cLocation.X == 0 && g_sChar.m_cLocation.Y == 10)// left to right
 	{
 		g_sChar.m_cLocation.X = 78;
 		g_sChar.m_cLocation.Y = 10;
 	}
-	if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 1)
+	if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 1)//up to down(left)
 	{
 		g_sChar.m_cLocation.X = 39;
 		g_sChar.m_cLocation.Y = 18;
 	}
-	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 19)
+	if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 19)//down to up(left)
+	{
+		g_sChar.m_cLocation.X = 39;
+		g_sChar.m_cLocation.Y = 2;
+	}
+	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 1)//up to down(right)
+	{
+		g_sChar.m_cLocation.X = 40;
+		g_sChar.m_cLocation.Y = 18;
+	}
+	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 19)//down to up(right)
 	{
 		g_sChar.m_cLocation.X = 40;
 		g_sChar.m_cLocation.Y = 2;
 	}
-
     if (bSomethingHappened)
     {
         // set the bounce time to some time in the future to prevent accidental triggers
@@ -237,7 +269,7 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
     renderMap();        // renders the map to the buffer first
-    renderCharacter();  // renders the character into the buffer
+    renderCharacter();// renders the character into the buffer
 }
 
 void renderMap()

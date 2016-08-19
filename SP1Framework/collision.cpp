@@ -4,34 +4,34 @@ extern Console g_Console;
 extern SGameChar  g_sChar;
 extern bool    g_abKeyPressed[K_COUNT];
 
-bool collision(int levelnumber)
+bool collision(int g_number)
 {
 	char txt[100][100];
 	int height = 0;
 	int width = 0;
 	ifstream file;
 
-	if (levelnumber == 1)
+	if (g_number == 1)
 	{
-		file.open("Level2.txt");
+		file.open("Level1.txt");
 	}
-	if (levelnumber == 2)
+	if (g_number == 2)
 	{
 		file.open("Level_2.txt");
 	}
-	if (levelnumber == 3)
+	if (g_number == 3)
 	{
 		file.open("Level_3.txt");
 	}
-	if (levelnumber == 4)
+	if (g_number == 4)
 	{
 		file.open("Level_4.txt");
 	}
-	if (levelnumber == 5)
+	if (g_number == 5)
 	{
 		file.open("Level_5.txt");
 	}
-	if (levelnumber == 6)
+	if (g_number == 6)
 	{
 		file.open("Level_6.txt");
 	}
@@ -54,7 +54,6 @@ bool collision(int levelnumber)
 
 	if (g_abKeyPressed[K_UP] && g_sChar.m_cLocation.Y > 0)
 	{
-		//Beep(1440, 30);
 		// --------------------------------- UNABLE TO MOVE UP IF ITS NOT ' ' ---------------------------------------------// 
 		if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 2] != '-')
 		{
@@ -64,7 +63,6 @@ bool collision(int levelnumber)
 	}
 	if (g_abKeyPressed[K_LEFT] && g_sChar.m_cLocation.X > 0)
 	{
-		//Beep(1440, 30);
 		// --------------------------------- UNABLE TO MOVE LEFT IS ITS NOT ' ' -------------------------------------------//
 		if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y - 1] != '-')
 		{
@@ -74,7 +72,6 @@ bool collision(int levelnumber)
 	}
 	if (g_abKeyPressed[K_DOWN] && g_sChar.m_cLocation.Y < g_Console.getConsoleSize().Y - 1)
 	{
-		//Beep(1440, 30);
 		// ---------------------------------- UNABLE TO MOVE DOWN IF ITS NOT ' ' -----------------------------------------//
 		if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] != '-')
 		{
@@ -83,13 +80,15 @@ bool collision(int levelnumber)
 	}
 	if (g_abKeyPressed[K_RIGHT] && g_sChar.m_cLocation.X < g_Console.getConsoleSize().X - 1)
 	{
-		//Beep(1440, 30);
 		// ---------------------------------- UNABLE TO MOVE RIGHT IF ITS NOT ' ' ----------------------------------------//
 		if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y - 1] != '-')
 		{
 			return false;
 		}
-
+		else
+		{
+			return true;
+		}
 	}
 	else
 	{

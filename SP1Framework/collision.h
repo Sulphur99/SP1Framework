@@ -9,6 +9,6 @@
 #include "game.h"
 #include <windows.h>
 
-bool collision(int levelnumber);
+bool collision(int g_number);
 
 #endif // End _COLLISION_H
