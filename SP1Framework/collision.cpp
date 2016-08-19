@@ -17,23 +17,23 @@ bool collision(int g_number)
 	}
 	if (g_number == 2)
 	{
-		file.open("Level_2.txt");
+		file.open("Level2.txt");
 	}
 	if (g_number == 3)
 	{
-		file.open("Level_3.txt");
+		file.open("Level2.1.txt");
 	}
 	if (g_number == 4)
 	{
-		file.open("Level_4.txt");
+		file.open("Level2.2.txt");
 	}
 	if (g_number == 5)
 	{
-		file.open("Level_5.txt");
+		file.open("Level3.txt");
 	}
 	if (g_number == 6)
 	{
-		file.open("Level_6.txt");
+		file.open("Level6.txt");
 	}
 
 	COORD c;

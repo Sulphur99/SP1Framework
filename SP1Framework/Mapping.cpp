@@ -16,6 +16,22 @@ char** Mapping(char** grid, int g_level)
 		clearScreen();
 		read.open("Level2.txt");
 	}
+	if (g_level == 3)
+	{
+		clearScreen();
+		read.open("Level2.1.txt");
+	}
+	if (g_level == 4)
+	{
+		clearScreen();
+		read.open("Level2.2.txt");
+	}
+	if (g_level == 5)
+	{
+		clearScreen();
+		read.open("Level3.txt");
+	}
+
 
 	if (read.is_open())
 	{
