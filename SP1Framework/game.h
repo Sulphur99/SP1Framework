@@ -26,7 +26,18 @@ enum EGAMESTATES
     S_SPLASHSCREEN,
     S_GAME,
     S_COUNT,
-	S_LEVEL2
+	S_LEVEL2,
+	S_LEVEL21,
+	S_LEVEL22,
+	S_LEVEL3,
+	S_LEVEL31,
+	S_LEVEL32,
+	S_LEVEL33,
+	S_LEVEL34,
+	S_LEVEL35,
+	S_LEVEL36,
+	S_LEVEL37,
+	S_LEVEL38
 };
 
 // struct for the game character
@@ -53,6 +64,4 @@ void renderMap();           // renders the map to the buffer first
 void renderCharacter();     // renders the character into the buffer
 void renderFramerate();     // renders debug information, frame rate, elapsed time, etc
 void renderToScreen();      // dump the contents of the buffer to the screen, one frame worth of game
-void gameplay2();
-void renderMap2();
 #endif // _GAME_H

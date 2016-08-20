@@ -16,7 +16,7 @@ SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN;
 double  g_dBounceTime; // this is to prevent key bouncing, so we won't trigger keypresses more than once
 int g_level = 1;
-int monkey = 0;
+int map = 0;
 
 // Console object
 Console g_Console(80, 25, "SP1 Framework");
@@ -106,7 +106,30 @@ void update(double dt)
             break;
         case S_GAME: gameplay(); // gameplay logic when we are in the game
             break;
-		case S_LEVEL2: gameplay2();
+		case S_LEVEL2: gameplay();
+			break;
+		case S_LEVEL21: gameplay();
+			break;
+		case S_LEVEL22: gameplay();
+			break;
+		case S_LEVEL3: gameplay();
+			break;
+		case S_LEVEL31: gameplay();
+			break;
+		case S_LEVEL32: gameplay();
+			break;
+		case S_LEVEL33: gameplay();
+			break;
+		case S_LEVEL34: gameplay();
+			break;
+		case S_LEVEL35: gameplay();
+			break;
+		case S_LEVEL36: gameplay();
+			break;
+		case S_LEVEL37: gameplay();
+			break;
+		case S_LEVEL38: gameplay();
+			break;
     }
 }
 //--------------------------------------------------------------
@@ -127,6 +150,29 @@ void render()
         case S_GAME: renderGame();
             break;
 		case S_LEVEL2: renderGame();
+			break;
+		case S_LEVEL21:renderGame();
+			break;
+		case S_LEVEL22:renderGame();
+			break;
+		case S_LEVEL3:renderGame();
+			break;
+		case S_LEVEL31: renderGame();
+			break;
+		case S_LEVEL32: renderGame();
+			break;
+		case S_LEVEL33: renderGame();
+			break;
+		case S_LEVEL34: renderGame();
+			break;
+		case S_LEVEL35: renderGame();
+			break;
+		case S_LEVEL36: renderGame();
+			break;
+		case S_LEVEL37: renderGame();
+			break;
+		case S_LEVEL38: renderGame();
+			break;
     }
     renderFramerate();  // renders debug information, frame rate, elapsed time, etc
     renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
@@ -145,23 +191,36 @@ void gameplay()            // gameplay logic
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
     moveCharacter();    // moves the character, collision detection, physics, etc
 						// sound can be played here too.
-	if (monkey == 1)
+	if (map == 0)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_GAME;
+		g_level = 1;
+	}
+	if (map == 1)
 	{
 		g_Console.clearBuffer();
 		g_eGameState = S_LEVEL2;
 		g_level = 2;
-	}                    
-}
-
-void gameplay2()            // gameplay logic
-{
-	processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
-	moveCharacter();    // moves the character, collision detection, physics, etc
-						// sound can be played here too.
-	/*if (g_sChar.m_cLocation.X == 79 && g_sChar.m_cLocation.Y == 10)
+	}
+	if (map == 2)
 	{
-		g_eGameState = S_LEVEL2;
-	}*/
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL21;
+		g_level = 3;
+	}
+	if (map == 3)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL22;
+		g_level = 4;
+	}
+	if (map == 4)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL3;
+		g_level = 5;
+	}
 }
 
 void moveCharacter()
@@ -204,12 +263,27 @@ void moveCharacter()
     }
 	if (g_sChar.m_cLocation.X == 79 && g_sChar.m_cLocation.Y == 10)//right to left
 		{
-			monkey += 1;
+			if (g_eGameState == S_GAME)
+			{
+				map = 1;
+			}
+			if (g_eGameState == S_LEVEL2)
+			{
+				map = 4;
+			}
 			g_sChar.m_cLocation.X = 1;
-			g_sChar.m_cLocation.Y = 10;
+			g_sChar.m_cLocation.Y = 10;		
 		}
 	if (g_sChar.m_cLocation.X == 0 && g_sChar.m_cLocation.Y == 10)// left to right
 	{
+		if (g_eGameState == S_LEVEL2)
+		{
+			map = 0;
+		}
+		if (g_eGameState == S_LEVEL3)
+		{
+			map = 1;
+		}
 		g_sChar.m_cLocation.X = 78;
 		g_sChar.m_cLocation.Y = 10;
 	}
@@ -217,9 +291,25 @@ void moveCharacter()
 	{
 		g_sChar.m_cLocation.X = 39;
 		g_sChar.m_cLocation.Y = 18;
+			if (g_eGameState == S_LEVEL2)
+			{
+				map = 2;
+			}
+			if (g_eGameState == S_LEVEL22)
+			{
+				map = 1;
+			}
 	}
 	if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 19)//down to up(left)
 	{
+		if (g_eGameState == S_LEVEL21)
+		{
+			map = 1;
+		}
+		if (g_eGameState == S_LEVEL2)
+		{
+			map = 3;
+		}
 		g_sChar.m_cLocation.X = 39;
 		g_sChar.m_cLocation.Y = 2;
 	}
@@ -227,9 +317,25 @@ void moveCharacter()
 	{
 		g_sChar.m_cLocation.X = 40;
 		g_sChar.m_cLocation.Y = 18;
+		if (g_eGameState == S_LEVEL2)
+		{
+			map = 2;
+		}
+		if (g_eGameState == S_LEVEL22)
+		{
+			map = 1;
+		}
 	}
 	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 19)//down to up(right)
 	{
+		if (g_eGameState == S_LEVEL21)
+		{
+			map = 1;
+		}
+		if (g_eGameState == S_LEVEL2)
+		{
+			map = 3;
+		}
 		g_sChar.m_cLocation.X = 40;
 		g_sChar.m_cLocation.Y = 2;
 	}
@@ -275,7 +381,8 @@ void renderGame()
 void renderMap()
 {
     // Set up sample colours, and output shadings
-    const WORD colors[] = {
+    const WORD colors[] = 
+	{
         0x1A, 0x2B, 0x3C, 0x4D, 0x5E, 0x6F,
         0xA1, 0xB2, 0xC3, 0xD4, 0xE5, 0xF6
     };
