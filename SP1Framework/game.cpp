@@ -221,6 +221,54 @@ void gameplay()            // gameplay logic
 		g_eGameState = S_LEVEL3;
 		g_level = 5;
 	}
+	if (map == 5)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL31;
+		g_level = 6;
+	}
+	if (map == 6)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL32;
+		g_level = 7;
+	}
+	if (map == 7)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL33;
+		g_level = 8;
+	}
+	if (map == 8)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL34;
+		g_level = 9;
+	}
+	if (map == 9)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL35;
+		g_level = 10;
+	}
+	if (map == 10)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL36;
+		g_level = 11;
+	}
+	if (map == 11)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL37;
+		g_level = 12;
+	}
+	if (map == 12)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_LEVEL38;
+		g_level = 13;
+	}
 }
 
 void moveCharacter()
@@ -271,6 +319,22 @@ void moveCharacter()
 			{
 				map = 4;
 			}
+			if (g_eGameState == S_LEVEL32)
+			{
+				map = 5;
+			}
+			if (g_eGameState == S_LEVEL31)
+			{
+				map = 8;
+			}
+			if (g_eGameState == S_LEVEL36)
+			{
+				map = 9;
+			}
+			if (g_eGameState == S_LEVEL35)
+			{
+				map = 12;
+			}
 			g_sChar.m_cLocation.X = 1;
 			g_sChar.m_cLocation.Y = 10;		
 		}
@@ -283,6 +347,22 @@ void moveCharacter()
 		if (g_eGameState == S_LEVEL3)
 		{
 			map = 1;
+		}
+		if (g_eGameState == S_LEVEL31)
+		{
+			map = 6;
+		}
+		if (g_eGameState == S_LEVEL34)
+		{
+			map = 5;
+		}
+		if (g_eGameState == S_LEVEL35)
+		{
+			map = 10;
+		}
+		if (g_eGameState == S_LEVEL38)
+		{
+			map = 9;
 		}
 		g_sChar.m_cLocation.X = 78;
 		g_sChar.m_cLocation.Y = 10;
@@ -299,6 +379,22 @@ void moveCharacter()
 			{
 				map = 1;
 			}
+			if (g_eGameState == S_LEVEL3)
+			{
+				map = 5;
+			}
+			if (g_eGameState == S_LEVEL31)
+			{
+				map = 7;
+			}
+			if (g_eGameState == S_LEVEL35)
+			{
+				map = 4;
+			}
+			if (g_eGameState == S_LEVEL37)
+			{
+				map = 9;
+			}
 	}
 	if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 19)//down to up(left)
 	{
@@ -309,6 +405,22 @@ void moveCharacter()
 		if (g_eGameState == S_LEVEL2)
 		{
 			map = 3;
+		}
+		if (g_eGameState == S_LEVEL31)
+		{
+			map = 4;
+		}
+		if (g_eGameState == S_LEVEL33)
+		{
+			map = 5;
+		}
+		if (g_eGameState == S_LEVEL3)
+		{
+			map = 9;
+		}
+		if (g_eGameState == S_LEVEL35)
+		{
+			map = 11;
 		}
 		g_sChar.m_cLocation.X = 39;
 		g_sChar.m_cLocation.Y = 2;
@@ -325,6 +437,22 @@ void moveCharacter()
 		{
 			map = 1;
 		}
+		if (g_eGameState == S_LEVEL3)
+		{
+			map = 5;
+		}
+		if (g_eGameState == S_LEVEL31)
+		{
+			map = 7;
+		}
+		if (g_eGameState == S_LEVEL35)
+		{
+			map = 4;
+		}
+		if (g_eGameState == S_LEVEL37)
+		{
+			map = 9;
+		}
 	}
 	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 19)//down to up(right)
 	{
@@ -335,6 +463,22 @@ void moveCharacter()
 		if (g_eGameState == S_LEVEL2)
 		{
 			map = 3;
+		}
+		if (g_eGameState == S_LEVEL31)
+		{
+			map = 4;
+		}
+		if (g_eGameState == S_LEVEL33)
+		{
+			map = 5;
+		}
+		if (g_eGameState == S_LEVEL3)
+		{
+			map = 9;
+		}
+		if (g_eGameState == S_LEVEL35)
+		{
+			map = 11;
 		}
 		g_sChar.m_cLocation.X = 40;
 		g_sChar.m_cLocation.Y = 2;
