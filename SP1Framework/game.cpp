@@ -7,10 +7,14 @@
 #include <iomanip>
 #include <sstream>
 #include "Transition.h"
+#include "Interact.h"
 
 double  g_dElapsedTime;
 double  g_dDeltaTime;
 bool    g_abKeyPressed[K_COUNT];
+extern int Activity_feed;
+int checkobj;
+
 
 // Game specific variables here
 SGameChar   g_sChar;
@@ -77,6 +81,7 @@ void getInput( void )
     g_abKeyPressed[K_DOWN]   = isKeyPressed(VK_DOWN);
     g_abKeyPressed[K_LEFT]   = isKeyPressed(VK_LEFT);
     g_abKeyPressed[K_RIGHT]  = isKeyPressed(VK_RIGHT);
+	g_abKeyPressed[K_INTERACT] = isKeyPressed(0x5A);
     g_abKeyPressed[K_SPACE]  = isKeyPressed(VK_SPACE);
     g_abKeyPressed[K_ESCAPE] = isKeyPressed(VK_ESCAPE);
 }
@@ -321,6 +326,11 @@ void processUserInput()
     // quits the game if player hits the escape key
     if (g_abKeyPressed[K_ESCAPE])
         g_bQuitGame = true;    
+	if (g_abKeyPressed[K_INTERACT])
+	{
+		checkobj = checkinteract(g_level);
+		Interact(checkobj);
+	}
 }
 
 void clearScreen()
@@ -346,8 +356,11 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
     renderMap();        // renders the map to the buffer first
+	renderFeed();
     renderCharacter();// renders the character into the buffer
 }
+
+
 
 void renderMap()
 {
@@ -370,6 +383,23 @@ void renderMap()
         colour(colors[i]);
         g_Console.writeToBuffer(c, " °±²Û", colors[i]);
     }*/
+}
+
+void renderFeed()
+{
+	COORD c = g_Console.getConsoleSize();
+	c.X = 0;
+	c.Y = 20;
+
+	if (Activity_feed == 1)
+	{
+		g_Console.writeToBuffer(c, "Curses! A wall blocks your way.", 0x02);
+	}
+
+	if (Activity_feed == 2)
+	{
+		g_Console.writeToBuffer(c, "It's a pillar.", 0x02);
+	}
 }
 
 void renderCharacter()

@@ -4,6 +4,7 @@
 #include "Framework\timer.h"
 #include "Mapping.h"
 #include "collision.h"
+#include "Interact.h"
 
 extern CStopWatch g_swTimer;
 extern bool g_bQuitGame;
@@ -15,6 +16,7 @@ enum EKEYS
     K_DOWN,
     K_LEFT,
     K_RIGHT,
+	K_INTERACT,
     K_ESCAPE,
     K_SPACE,
     K_COUNT
@@ -45,6 +47,7 @@ struct SGameChar
 {
     COORD m_cLocation;
     bool  m_bActive;
+	int Key;
 };
 
 void init        ( void );      // initialize your variables, allocate memory, etc
@@ -64,4 +67,8 @@ void renderMap();           // renders the map to the buffer first
 void renderCharacter();     // renders the character into the buffer
 void renderFramerate();     // renders debug information, frame rate, elapsed time, etc
 void renderToScreen();      // dump the contents of the buffer to the screen, one frame worth of game
+void renderFeed();
+//int checkinteract(int g_number);
+//int Interact(int checkobj);
+
 #endif // _GAME_H
