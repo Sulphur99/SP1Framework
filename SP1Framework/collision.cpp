@@ -82,34 +82,28 @@ bool collision(int g_level)
 
 	if (g_abKeyPressed[K_UP] && g_sChar.m_cLocation.Y > 0)
 	{
-		// --------------------------------- UNABLE TO MOVE UP IF ITS NOT ' ' ---------------------------------------------// 
-		if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 2] != '-')
+		if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] != '-')
 		{
 			return false;
 		}
-
 	}
 	if (g_abKeyPressed[K_LEFT] && g_sChar.m_cLocation.X > 0)
 	{
-		// --------------------------------- UNABLE TO MOVE LEFT IS ITS NOT ' ' -------------------------------------------//
-		if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y - 1] != '-')
+		if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] != '-')
 		{
 			return false;
 		}
-
 	}
 	if (g_abKeyPressed[K_DOWN] && g_sChar.m_cLocation.Y < g_Console.getConsoleSize().Y - 1)
 	{
-		// ---------------------------------- UNABLE TO MOVE DOWN IF ITS NOT ' ' -----------------------------------------//
-		if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] != '-')
+		if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] != '-')
 		{
 			return false;
 		}
 	}
 	if (g_abKeyPressed[K_RIGHT] && g_sChar.m_cLocation.X < g_Console.getConsoleSize().X - 1)
 	{
-		// ---------------------------------- UNABLE TO MOVE RIGHT IF ITS NOT ' ' ----------------------------------------//
-		if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y - 1] != '-')
+		if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] != '-')
 		{
 			return false;
 		}

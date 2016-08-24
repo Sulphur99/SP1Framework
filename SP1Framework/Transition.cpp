@@ -2,180 +2,249 @@
 extern EGAMESTATES g_eGameState;
 extern SGameChar g_sChar;
 extern int map;
+extern bool load;
+
 void transition()
 {
-	if (g_sChar.m_cLocation.X == 79 && g_sChar.m_cLocation.Y == 10)//right to left
+	bool loaded = false;
+
+	if (g_sChar.m_cLocation.X == 78 && g_sChar.m_cLocation.Y == 10) //right to left
 	{
-		if (g_eGameState == S_GAME)
+		if (map == 1)//1-2
 		{
-			map = 1;
+			map = 2;
+			loaded = true;
 		}
-		if (g_eGameState == S_LEVEL2)
-		{
-			map = 4;
-		}
-		if (g_eGameState == S_LEVEL32)
+		else if (map == 2)//2-5
 		{
 			map = 5;
+			loaded = true;
 		}
-		if (g_eGameState == S_LEVEL31)
-		{
-			map = 8;
-		}
-		if (g_eGameState == S_LEVEL36)
+		else if (map == 6)//6-9
 		{
 			map = 9;
+			loaded = true;
 		}
-		if (g_eGameState == S_LEVEL35)
+		else if (map == 7)//7-6
 		{
-			map = 12;
+			map = 6;
+			loaded = true;
 		}
-		g_sChar.m_cLocation.X = 1;
-		g_sChar.m_cLocation.Y = 10;
-		}
-		if (g_sChar.m_cLocation.X == 0 && g_sChar.m_cLocation.Y == 10)// left to right
+		else if (map == 10)//10-13
 		{
-			if (g_eGameState == S_LEVEL2)
-			{
-				map = 0;
-			}
-			if (g_eGameState == S_LEVEL3)
-			{
-				map = 1;
-			}
-			if (g_eGameState == S_LEVEL31)
-			{
-				map = 6;
-			}
-			if (g_eGameState == S_LEVEL34)
-			{
-				map = 5;
-			}
-			if (g_eGameState == S_LEVEL35)
-			{
-				map = 10;
-			}
-			if (g_eGameState == S_LEVEL38)
-			{
-				map = 9;
-			}
-			g_sChar.m_cLocation.X = 78;
+			map = 13;
+			loaded = true;
+		}
+		else if (map == 11)//11-10
+		{
+			map = 10;
+			loaded = true;
+		}
+		if (loaded = true)
+		{
+			load = true;
+			g_sChar.m_cLocation.X = 2;
 			g_sChar.m_cLocation.Y = 10;
 		}
-		if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 1)//up to down(left)
+		else
 		{
+			load = false;
+		}
+	}
+	if (g_sChar.m_cLocation.X == 1 && g_sChar.m_cLocation.Y == 10) //left to right
+	{
+		if (map == 2)//2-1
+		{
+			map = 1;
+			loaded = true;
+		}
+		else if (map == 5)//5-2
+		{
+			map = 2;
+			loaded = true;
+		}
+		else if (map == 9)//9-6
+		{
+			map = 6;
+			loaded = true;
+		}
+		else if (map == 6)//6-7
+		{
+			map = 7;
+			loaded = true;
+		}
+		else if (map == 13)//13-10
+		{
+			map = 10;
+			loaded = true;
+		}
+		else if (map == 10)//10-11
+		{
+			map = 11;
+			loaded = true;
+		}
+		if (loaded = true)
+		{
+			load = true;
+			g_sChar.m_cLocation.X = 77;
+			g_sChar.m_cLocation.Y = 10;
+		}
+	}
+	if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 1) //up to down(left)
+	{
+		if (map == 2)//2-3
+		{
+			map = 3;
+			loaded = true;
+		}
+		else if (map == 4)//4-2
+		{
+			map = 2;
+			loaded = true;
+		}
+		else if (map == 6)//6-8
+		{
+			map = 8;
+			loaded = true;
+		}
+		else if (map == 5)//5-6
+		{
+			map = 6;
+			loaded = true;
+		}
+		else if (map == 10)//10-5
+		{
+			map = 5;
+			loaded = true;
+		}
+		else if (map == 12)//12-10
+		{
+			map = 10;
+			loaded = true;
+		}
+		if (loaded = true)
+		{
+			load = true;
 			g_sChar.m_cLocation.X = 39;
 			g_sChar.m_cLocation.Y = 18;
-			if (g_eGameState == S_LEVEL2)
-			{
-				map = 2;
-			}
-			if (g_eGameState == S_LEVEL22)
-			{
-				map = 1;
-			}
-			if (g_eGameState == S_LEVEL3)
-			{
-				map = 5;
-			}
-			if (g_eGameState == S_LEVEL31)
-			{
-				map = 7;
-			}
-			if (g_eGameState == S_LEVEL35)
-			{
-				map = 4;
-			}
-			if (g_eGameState == S_LEVEL37)
-			{
-				map = 9;
-			}
 		}
-		if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 19)//down to up(left)
+	}
+	if (g_sChar.m_cLocation.X == 39 && g_sChar.m_cLocation.Y == 19)//down to up(left)
+	{
+		if (map == 2)//2-4
 		{
-			if (g_eGameState == S_LEVEL21)
-			{
-				map = 1;
-			}
-			if (g_eGameState == S_LEVEL2)
-			{
-				map = 3;
-			}
-			if (g_eGameState == S_LEVEL31)
-			{
-				map = 4;
-			}
-			if (g_eGameState == S_LEVEL33)
-			{
-				map = 5;
-			}
-			if (g_eGameState == S_LEVEL3)
-			{
-				map = 9;
-			}
-			if (g_eGameState == S_LEVEL35)
-			{
-				map = 11;
-			}
+			map = 4;
+			loaded = true;
+		}
+		else if (map == 3)//3-2
+		{
+			map = 2;
+			loaded = true;
+		}
+		else if (map == 8)//8-6
+		{
+			map = 6;
+			loaded = true;
+		}
+		else if (map == 6)//6-5
+		{
+			map = 5;
+			loaded = true;
+		}
+		else if (map == 5)//5-10
+		{
+			map = 10;
+			loaded = true;
+		}
+		else if (map == 10)//10-12
+		{
+			map = 12;
+			loaded = true;
+		}
+		if (loaded = true)
+		{
+			load = true;
 			g_sChar.m_cLocation.X = 39;
 			g_sChar.m_cLocation.Y = 2;
 		}
-		if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 1)//up to down(right)
+	}
+	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 1)//up to down(right)
+	{
+		if (map == 2)//2-3
 		{
+			map = 3;
+			loaded = true;
+		}
+		else if (map == 4)//4-2
+		{
+			map = 2;
+			loaded = true;
+		}
+		else if (map == 6)//6-8
+		{
+			map = 8;
+			loaded = true;
+		}
+		else if (map == 5)//5-6
+		{
+			map = 6;
+			loaded = true;
+		}
+		else if (map == 10)//10-5
+		{
+			map = 5;
+			loaded = true;
+		}
+		else if (map == 12)//12-10
+		{
+			map = 10;
+			loaded = true;
+		}
+
+		if (loaded = true)
+		{
+			load = true;
 			g_sChar.m_cLocation.X = 40;
 			g_sChar.m_cLocation.Y = 18;
-			if (g_eGameState == S_LEVEL2)
-			{
-				map = 2;
-			}
-			if (g_eGameState == S_LEVEL22)
-			{
-				map = 1;
-			}
-			if (g_eGameState == S_LEVEL3)
-			{
-				map = 5;
-			}
-			if (g_eGameState == S_LEVEL31)
-			{
-				map = 7;
-			}
-			if (g_eGameState == S_LEVEL35)
-			{
-				map = 4;
-			}
-			if (g_eGameState == S_LEVEL37)
-			{
-				map = 9;
-			}
 		}
-		if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 19)//down to up(right)
+	}
+	if (g_sChar.m_cLocation.X == 40 && g_sChar.m_cLocation.Y == 19)//down to up(right)
+	{
+		if (map == 2)//2-4
 		{
-			if (g_eGameState == S_LEVEL21)
-			{
-				map = 1;
-			}
-			if (g_eGameState == S_LEVEL2)
-			{
-				map = 3;
-			}
-			if (g_eGameState == S_LEVEL31)
-			{
-				map = 4;
-			}
-			if (g_eGameState == S_LEVEL33)
-			{
-				map = 5;
-			}
-			if (g_eGameState == S_LEVEL3)
-			{
-				map = 9;
-			}
-			if (g_eGameState == S_LEVEL35)
-			{
-				map = 11;
-			}
+			map = 4;
+			loaded = true;
+		}
+		else if (map == 3)//3-2
+		{
+			map = 2;
+			loaded = true;
+		}
+		else if (map == 8)//8-6
+		{
+			map = 6;
+			loaded = true;
+		}
+		else if (map == 6)//6-5
+		{
+			map = 5;
+			loaded = true;
+		}
+		else if (map == 5)//5-10
+		{
+			map = 10;
+			loaded = true;
+		}
+		else if (map == 10)//10-12
+		{
+			map = 12;
+			loaded = true;
+		}
+		if (loaded = true)
+		{
+			load = true;
 			g_sChar.m_cLocation.X = 40;
 			g_sChar.m_cLocation.Y = 2;
 		}
+	}
 }

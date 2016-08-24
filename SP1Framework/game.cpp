@@ -24,6 +24,8 @@ EGAMESTATES g_eGameState = S_SPLASHSCREEN;
 double  g_dBounceTime; // this is to prevent key bouncing, so we won't trigger keypresses more than once
 int g_level = 1;
 int map = 0;
+bool load = false;
+char grid[80][26];
 int memory;
 int key = 0;
 
@@ -117,30 +119,6 @@ void update(double dt)
 		break;
 	case S_GAME: gameplay(); // gameplay logic when we are in the game
 		break;
-	case S_LEVEL2: gameplay();
-		break;
-	case S_LEVEL21: gameplay();
-		break;
-	case S_LEVEL22: gameplay();
-		break;
-	case S_LEVEL3: gameplay();
-		break;
-	case S_LEVEL31: gameplay();
-		break;
-	case S_LEVEL32: gameplay();
-		break;
-	case S_LEVEL33: gameplay();
-		break;
-	case S_LEVEL34: gameplay();
-		break;
-	case S_LEVEL35: gameplay();
-		break;
-	case S_LEVEL36: gameplay();
-		break;
-	case S_LEVEL37: gameplay();
-		break;
-	case S_LEVEL38: gameplay();
-		break;
 	case S_INVENTORY:gameplay();
 		break;
 	}
@@ -162,30 +140,6 @@ void render()
 		break;
 	case S_GAME: renderGame();
 		break;
-	case S_LEVEL2: renderGame();
-		break;
-	case S_LEVEL21:renderGame();
-		break;
-	case S_LEVEL22:renderGame();
-		break;
-	case S_LEVEL3:renderGame();
-		break;
-	case S_LEVEL31: renderGame();
-		break;
-	case S_LEVEL32: renderGame();
-		break;
-	case S_LEVEL33: renderGame();
-		break;
-	case S_LEVEL34: renderGame();
-		break;
-	case S_LEVEL35: renderGame();
-		break;
-	case S_LEVEL36: renderGame();
-		break;
-	case S_LEVEL37: renderGame();
-		break;
-	case S_LEVEL38: renderGame();
-		break;
 	case S_INVENTORY:renderGame();
 		break;
 	}
@@ -198,99 +152,50 @@ void splashScreenWait()    // waits for time to pass in splash screen
 	if (g_dElapsedTime > 3.0)
 	{// wait for 3 seconds to switch to game mode, else do nothing
 		g_eGameState = S_GAME;
+		map = 1;
+		load = true;
 	}
 }
 
 void gameplay()            // gameplay logic
 {
 	processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
+	if (load == true)
+	{
+		switch (map)
+		{
+		case 1: loadMap1();
+			break;
+		case 2: loadMap2();
+			break;
+		case 3: loadMap3();
+			break;
+		case 4: loadMap4();
+			break;
+		case 5: loadMap5();
+			break;
+		case 6: loadMap6();
+			break;
+		case 7: loadMap7();
+			break;
+		case 8: loadMap8();
+			break;
+		case 9: loadMap9();
+			break;
+		case 10: loadMap10();
+			break;
+		case 11: loadMap11();
+			break;
+		case 12: loadMap12();
+			break;
+		case 13: loadMap13();
+			break;
+		}
+		load = false;
+	}
 	moveCharacter();    // moves the character, collision detection, physics, etc
-	transition();					// sound can be played here too.
-
-	if (map == 0)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_GAME;
-		g_level = 1;
-	}
-	if (map == 1)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL2;
-		g_level = 2;
-	}
-	if (map == 2)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL21;
-		g_level = 3;
-	}
-	if (map == 3)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL22;
-		g_level = 4;
-	}
-	if (map == 4)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL3;
-		g_level = 5;
-	}
-	if (map == 5)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL31;
-		g_level = 6;
-	}
-	if (map == 6)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL32;
-		g_level = 7;
-	}
-	if (map == 7)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL33;
-		g_level = 8;
-	}
-	if (map == 8)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL34;
-		g_level = 9;
-	}
-	if (map == 9)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL35;
-		g_level = 10;
-	}
-	if (map == 10)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL36;
-		g_level = 11;
-	}
-	if (map == 11)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL37;
-		g_level = 12;
-	}
-	if (map == 12)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_LEVEL38;
-		g_level = 13;
-	}
-	if (map == 13)
-	{
-		g_Console.clearBuffer();
-		g_eGameState = S_INVENTORY;
-		g_level = 14;
-	}
+	transition();					
+						// sound can be played here too.
 }
 
 void moveCharacter()
@@ -301,25 +206,25 @@ void moveCharacter()
 
 	// Updating the location of the character based on the key press
 	// providing a beep sound whenver we shift the character
-	if (g_abKeyPressed[K_UP] && g_sChar.m_cLocation.Y > 0 && collision(g_level))
+	if (g_abKeyPressed[K_UP] && g_sChar.m_cLocation.Y > 0 && collision(map))
 	{
 		//Beep(1440, 30);
 		g_sChar.m_cLocation.Y--;
 		bSomethingHappened = true;
 	}
-	if (g_abKeyPressed[K_LEFT] && g_sChar.m_cLocation.X > 0 && collision(g_level))
+	if (g_abKeyPressed[K_LEFT] && g_sChar.m_cLocation.X > 0 && collision(map))
 	{
 		//Beep(1440, 30);
 		g_sChar.m_cLocation.X--;
 		bSomethingHappened = true;
 	}
-	if (g_abKeyPressed[K_DOWN] && g_sChar.m_cLocation.Y < g_Console.getConsoleSize().Y - 1 && collision(g_level))
+	if (g_abKeyPressed[K_DOWN] && g_sChar.m_cLocation.Y < g_Console.getConsoleSize().Y - 1 && collision(map))
 	{
 		//Beep(1440, 30);
 		g_sChar.m_cLocation.Y++;
 		bSomethingHappened = true;
 	}
-	if (g_abKeyPressed[K_RIGHT] && g_sChar.m_cLocation.X < g_Console.getConsoleSize().X - 1 && collision(g_level))
+	if (g_abKeyPressed[K_RIGHT] && g_sChar.m_cLocation.X < g_Console.getConsoleSize().X - 1 && collision(map))
 	{
 		//Beep(1440, 30);
 		g_sChar.m_cLocation.X++;
@@ -393,9 +298,29 @@ void renderMap()
 		0xA1, 0xB2, 0xC3, 0xD4, 0xE5, 0xF6
 	};
 
-	char** grid = new char*[100];
-	grid = Mapping(grid, g_level);
-	print_map(grid);
+	COORD c;
+
+	for (int y = 0; y < 26; y++)
+	{
+		c.Y = y;
+		for (int x = 0; x < 80; x++)
+		{
+			if (grid[x][y] == '-')
+			{
+				grid[x][y] = (char)176;
+			}
+			if (grid[x][y] == 'W')
+			{
+				grid[x][y] = (char)178;
+			}
+			if (grid[x][y] == '\n')
+			{
+				grid[x][y] = ' ';
+			}
+			c.X = x;
+			g_Console.writeToBuffer(c, grid[x][y]);
+		}
+	}
 
 	/*COORD c;
 	for (int i = 0; i < 12; ++i)

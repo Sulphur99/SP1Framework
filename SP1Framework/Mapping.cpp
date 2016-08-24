@@ -1,121 +1,276 @@
 #include "Mapping.h"
 
 extern Console g_Console;
+extern char grid[80][26];
 
-char** Mapping(char** grid, int g_level)
+void loadMap1()
 {
-	ifstream read;
-
-	if (g_level == 1)
+	ifstream file("Level1.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
 	{
-		clearScreen();
-		read.open("Level1.txt");
-	}
-	if (g_level == 2)
-	{
-		clearScreen();
-		read.open("Level2.txt");
-	}
-	if (g_level == 3)
-	{
-		clearScreen();
-		read.open("Level2.1.txt");
-	}
-	if (g_level == 4)
-	{
-		clearScreen();
-		read.open("Level2.2.txt");
-	}
-	if (g_level == 5)
-	{
-		clearScreen();
-		read.open("Level3.txt");
-	}
-	if (g_level == 6)
-	{
-		clearScreen();
-		read.open("Level3.1.txt");
-	}
-	if (g_level == 7)
-	{
-		clearScreen();
-		read.open("Level3.2.txt");
-	}
-	if (g_level == 8)
-	{
-		clearScreen();
-		read.open("Level3.3.txt");
-	}
-	if (g_level == 9)
-	{
-		clearScreen();
-		read.open("Level3.4.txt");
-	}
-	if (g_level == 10)
-	{
-		clearScreen();
-		read.open("Level3.5.txt");
-	}
-	if (g_level == 11)
-	{
-		clearScreen();
-		read.open("Level3.6.txt");
-	}
-	if (g_level == 12)
-	{
-		clearScreen();
-		read.open("Level3.7.txt");
-	}
-	if (g_level == 13)
-	{
-		clearScreen();
-		read.open("Level3.8.txt");
-	}
-	if (g_level == 14)
-	{
-		clearScreen();
-		read.open("Inventory.txt");
-	}
-	if (read.is_open())
-	{
-		for (int i = 0; i < 25; i++)
+		while (height < 25)
 		{
-			grid[i] = new char[80];
-
-			for (int j = 0; j < 80; j++)
+			while (width < 80)
 			{
-				read >> grid[i][j];
+				file >> grid[width][height];
+				width++;
 			}
+			height++;
+			width = 0;
 		}
-		read.close();
+		file.close();
 	}
-
-	return grid;
+}
+void loadMap2()
+{
+	ifstream file("Level2.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
 }
 
-void print_map(char** grid)
+void loadMap3()
 {
-	COORD c;
-
-	for (int i = 0; i < 25; ++i)
+	ifstream file("Level2.1.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
 	{
-		c.Y = i + 1;
-		for (int j = 0; j < 80; ++j)
+		while (height < 25)
 		{
-			if (grid[i][j] == '-')
+			while (width < 80)
 			{
-				grid[i][j] = (char)176;
+				file >> grid[width][height];
+				width++;
 			}
-			if (grid[i][j] == 'W')
-			{
-				grid[i][j] = (char)178;
-			}
-			if (grid[i][j] == '\n')
-			{
-				grid[i][j] = ' ';
-			}
-			c.X = j;
-			g_Console.writeToBuffer(c, grid[i][j]);
+			height++;
+			width = 0;
 		}
+		file.close();
+	}
+}
+
+void loadMap4()
+{
+	ifstream file("Level2.2.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap5()
+{
+	ifstream file("Level3.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap6()
+{
+	ifstream file("Level3.1.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap7()
+{
+	ifstream file("Level3.2.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap8()
+{
+	ifstream file("Level3.3.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap9()
+{
+	ifstream file("Level3.4.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap10()
+{
+	ifstream file("Level3.5.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap11()
+{
+	ifstream file("Level3.6.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap12()
+{
+	ifstream file("Level3.7.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+	}
+}
+
+void loadMap13()
+{
+	ifstream file("Level3.8.txt");
+	int width = 0;
+	int height = 0;
+	if (file.is_open())
+	{
+		while (height < 25)
+		{
+			while (width < 80)
+			{
+				file >> grid[width][height];
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
 	}
 }
