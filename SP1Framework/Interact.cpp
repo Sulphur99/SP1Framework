@@ -2,7 +2,7 @@
 extern bool g_test;
 extern Console g_Console;
 extern SGameChar  g_sChar;
-extern bool    g_abKeyPressed[K_COUNT];
+extern bool g_abKeyPressed[K_COUNT];
 int Activity_feed = 0;
 
 int checkinteract(int g_number)

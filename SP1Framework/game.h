@@ -19,7 +19,8 @@ enum EKEYS
 	K_INTERACT,
     K_ESCAPE,
     K_SPACE,
-    K_COUNT
+    K_COUNT,
+	K_I
 };
 
 // Enumeration for the different screen states
@@ -39,7 +40,8 @@ enum EGAMESTATES
 	S_LEVEL35,
 	S_LEVEL36,
 	S_LEVEL37,
-	S_LEVEL38
+	S_LEVEL38,
+	S_INVENTORY
 };
 
 // struct for the game character

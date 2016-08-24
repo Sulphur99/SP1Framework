@@ -82,6 +82,7 @@
     <ClCompile Include="Framework\timer.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Interact.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mapping.cpp" />
     <ClCompile Include="Transition.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="Framework\timer.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Interact.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Mapping.h" />
     <ClInclude Include="Transition.h" />
   </ItemGroup>

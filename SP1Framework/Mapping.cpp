@@ -71,6 +71,11 @@ char** Mapping(char** grid, int g_level)
 		clearScreen();
 		read.open("Level3.8.txt");
 	}
+	if (g_level == 14)
+	{
+		clearScreen();
+		read.open("Inventory.txt");
+	}
 	if (read.is_open())
 	{
 		for (int i = 0; i < 25; i++)

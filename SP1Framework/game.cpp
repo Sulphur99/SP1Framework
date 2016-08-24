@@ -8,6 +8,7 @@
 #include <sstream>
 #include "Transition.h"
 #include "Interact.h"
+#include "Inventory.h"
 
 double  g_dElapsedTime;
 double  g_dDeltaTime;
@@ -23,6 +24,8 @@ EGAMESTATES g_eGameState = S_SPLASHSCREEN;
 double  g_dBounceTime; // this is to prevent key bouncing, so we won't trigger keypresses more than once
 int g_level = 1;
 int map = 0;
+int memory;
+int key = 0;
 
 // Console object
 Console g_Console(80, 25, "SP1 Framework");
@@ -85,6 +88,7 @@ void getInput(void)
 	g_abKeyPressed[K_INTERACT] = isKeyPressed(0x5A);
 	g_abKeyPressed[K_SPACE] = isKeyPressed(VK_SPACE);
 	g_abKeyPressed[K_ESCAPE] = isKeyPressed(VK_ESCAPE);
+	g_abKeyPressed[K_I] = isKeyPressed(0x49);
 }
 
 //--------------------------------------------------------------
@@ -137,6 +141,8 @@ void update(double dt)
 		break;
 	case S_LEVEL38: gameplay();
 		break;
+	case S_INVENTORY:gameplay();
+		break;
 	}
 }
 //--------------------------------------------------------------
@@ -180,6 +186,8 @@ void render()
 		break;
 	case S_LEVEL38: renderGame();
 		break;
+	case S_INVENTORY:renderGame();
+		break;
 	}
 	renderFramerate();  // renders debug information, frame rate, elapsed time, etc
 	renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
@@ -198,6 +206,7 @@ void gameplay()            // gameplay logic
 	processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
 	moveCharacter();    // moves the character, collision detection, physics, etc
 	transition();					// sound can be played here too.
+
 	if (map == 0)
 	{
 		g_Console.clearBuffer();
@@ -275,6 +284,12 @@ void gameplay()            // gameplay logic
 		g_Console.clearBuffer();
 		g_eGameState = S_LEVEL38;
 		g_level = 13;
+	}
+	if (map == 13)
+	{
+		g_Console.clearBuffer();
+		g_eGameState = S_INVENTORY;
+		g_level = 14;
 	}
 }
 
@@ -358,9 +373,13 @@ void renderSplashScreen()  // renders the splash screen
 
 void renderGame()
 {
-	renderMap();        // renders the map to the buffer first
-	renderFeed();
-	renderCharacter();// renders the character into the buffer
+	renderMap();// renders the map to the buffer first
+	inventory();
+
+	if (map != 13)
+	{
+		renderCharacter();// renders the character into the buffer
+	}
 }
 
 
