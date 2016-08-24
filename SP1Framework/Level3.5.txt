@@ -6,14 +6,14 @@ W-------------------------------------W--W-------------------------------------W
 W-------------------------------------W--W-------------------------------------W
 W----------WWWWWWWW-------------------W--W-------------------WWWWWWWW----------W
 W----------W------W-------------------W--W-------------------W------W----------W
-WWWWWWWWWWWW------WWWWWWWWWWWWWWWWWWWWW--WWWWWWWWWWWWWWWWWWWWW-----XWWWWWWWWWWWW
+WWWWWWWWWWWW------WWWWWWWWWWWWWWWWWWWWW--WWWWWWWWWWWWWWWWWWWWW------WWWWWWWWWWWW
 --------------------------------------------------------------------------------
-WWWWWWWWWWWWX-----WWWWWWWWWWWWWWWWWWWWW--WWWWWWWWWWWWWWWWWWWWW------WWWWWWWWWWWW
+WWWWWWWWWWWW------WWWWWWWWWWWWWWWWWWWWW--WWWWWWWWWWWWWWWWWWWWW------WWWWWWWWWWWW
 W----------W------W-------------------W--W-------------------W------W----------W
 W----------WWWWWWWW-------------------W--W-------------------WWWWWWWW----------W
 W---------------------------------WWWWW--WWWWW---------------------------------W
 W---------------------------------W----------W---------------------------------W
-W---------------------------------W------X---W---------------------------------W
+W---------------------------------W----------W---------------------------------W
 W---------------------------------WWWWW--WWWWW---------------------------------W
 W-------------------------------------W--W-------------------------------------W
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW--WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
