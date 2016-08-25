@@ -5,6 +5,8 @@ extern SGameChar  g_sChar;
 extern bool g_abKeyPressed[K_COUNT];
 int Activity_feed = 0;
 extern char grid[80][26];
+extern double g_dElapsedTime;
+extern bool setText;
 
 int checkinteract(int g_number)
 {
@@ -161,4 +163,82 @@ int Interact(int checkobj)
 		Activity_feed = 0;
 	}
 	return 0;
+}
+void renderFeed()
+{
+	COORD c = g_Console.getConsoleSize();
+	c.X = 0;
+	c.Y = 20;
+	string text;
+	int textSize;
+
+	if (Activity_feed == 1 && !setText)
+	{
+		text = "Curses! A wall blocks your way.";
+		textSize = sizeof(text);
+		double newTime = g_dElapsedTime + 1.0;
+
+		g_Console.writeToBuffer(c, text, 0x02);
+
+		if (g_dElapsedTime > newTime)
+		{
+			for (int i = 0; i < textSize; i++)
+			{
+				g_Console.writeToBuffer(c, " ");
+				c.X++;
+			}
+		}
+		setText = true;
+	}
+
+	if (Activity_feed == 2 && !setText)
+	{
+		text = "It's a pillar.";
+		textSize = sizeof(text);
+		int newTime = g_dElapsedTime + 1.0;
+
+		g_Console.writeToBuffer(c, text, 0x02);
+
+		if (g_dElapsedTime > newTime)
+		{
+			for (int i = 0; i < textSize; i++)
+			{
+				g_Console.writeToBuffer(c, " ");
+				c.X++;
+			}
+		}
+		setText = true;
+	}
+
+	if (Activity_feed == 3 && !setText)
+	{
+		text = "The door's locked.";
+		textSize = sizeof(text);
+		int newTime = g_dElapsedTime + 1.0;
+
+		g_Console.writeToBuffer(c, text, 0x02);
+
+		if (g_dElapsedTime > newTime)
+		{
+			for (int i = 0; i < textSize; i++)
+			{
+				g_Console.writeToBuffer(c, " ");
+				c.X++;
+			}
+		}
+		setText = true;
+	}
+
+	if (Activity_feed == 4)
+	{
+		text = "You found a chest! The chest contains a shimmering key.";
+		g_Console.writeToBuffer(c, text, 0x02);
+	}
+
+	/*if (Activity_feed == 5)
+	{
+	text = "The chest is empty. Maybe because you took whatever's in it.";
+	g_Console.writeToBuffer(c, text, 0x02);
+	}
+	*/
 }

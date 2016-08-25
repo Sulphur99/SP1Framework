@@ -8,6 +8,7 @@ extern Console g_Console;
 COORD a;
 extern double g_dElapsedTime;
 extern double g_dBounceTime;
+extern char keypiece;
 
 //void inventory()
 //{
@@ -80,10 +81,48 @@ void loadInv()
 
 void renderInv()
 {
-	if (key > 0 && map == 14)
+	ifstream file;
+	int height = 0;
+	int width = 0;
+	file.open("Inventorytext.txt");
+	char grid3[20][1];
+	if (file.is_open())
 	{
-		a.X = 1;
-		a.Y = 2;
-		g_Console.writeToBuffer(a, "Key x1");
+		while (height < 1)
+		{
+			while (width < 20)
+			{
+				file >> grid3[width][height];
+				if (grid3[width][height] == '-')
+				{
+					grid3[width][height] = (char)176;
+				}
+				width++;
+			}
+			height++;
+			width = 0;
+		}
+		file.close();
+		if (key == 1)
+		{
+			a.X = 1;
+			a.Y = 2;
+			for (int b = 0; b < 7; b++)
+			{
+				g_Console.writeToBuffer(a, grid3[b][0]);
+				a.X += 1;
+			}
+		}
+		if (keypiece > 48)
+		{
+			a.X = 1;
+			a.Y = 2;
+			for (int b = 7; b < 20; b++)
+			{
+				g_Console.writeToBuffer(a, grid3[b][0]);
+				a.X += 1;
+			}
+			g_Console.writeToBuffer(a, keypiece);
+		}
 	}
 }
