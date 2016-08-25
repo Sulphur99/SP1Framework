@@ -83,6 +83,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Interact.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="LoadMap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mapping.cpp" />
     <ClCompile Include="Transition.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="Interact.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="LoadMap.h" />
     <ClInclude Include="Mapping.h" />
     <ClInclude Include="Transition.h" />
   </ItemGroup>

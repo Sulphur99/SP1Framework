@@ -98,82 +98,82 @@ int checkinteract(int g_number)
 	txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] = ' ';
 	}*/
 
-	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 2] == 'W')//up
+	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'W')//up
 	{
 		return 1;
 	}
 
-	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y - 1] == 'W') //left
+	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'W') //left
 	{
 		return 1;
 	}
 
-	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] == 'W')//down
+	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == 'W')//down
 	{
 		return 1;
 	}
 
-	if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y - 1] == 'W')//right
+	if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'W')//right
 	{
 		return 1;
 	}
 
-	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 2] == 'P')
+	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'P')
 	{
 		return 2;
 	}
 
-	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y - 1] == 'P')
+	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'P')
 	{
 		return 2;
 	}
 
-	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] == 'P')
+	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == 'P')
 	{
 		return 2;
 	}
 
-	if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y - 1] == 'P')
+	if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'P')
 	{
 		return 2;
 	}
 
-	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 2] == 'D')
+	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'D')
 	{
 		return 3;
 	}
 
-	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y - 1] == 'D')
+	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'D')
 	{
 		return 3;
 	}
 
-	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] == 'D')
+	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == 'D')
 	{
 		return 3;
 	}
 
-	if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y - 1] == 'D')
+	if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'D')
 	{
 		return 3;
 	}
 
-	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 2] == 'T')
+	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'T')
 	{
 		return 4;
 	}
 
-	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y - 1] == 'T')
+	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'T')
 	{
 		return 4;
 	}
 
-	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] == 'T')
+	if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == 'T')
 	{
 		return 4;
 	}
 
-	if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y - 1] == 'T')
+	if (txt[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'T')
 	{
 		return 4;
 	}

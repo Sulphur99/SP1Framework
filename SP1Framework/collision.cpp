@@ -11,7 +11,7 @@ bool collision(int g_level)
 	int width = 0;
 	ifstream file;
 
-	if (g_level == 1)
+	/*if (g_level == 1)
 	{
 		file.open("Level1.txt");
 	}
@@ -78,7 +78,7 @@ bool collision(int g_level)
 			height++;
 		}
 		file.close();
-	}
+	}*/
 
 	if (g_abKeyPressed[K_UP] && g_sChar.m_cLocation.Y > 0)
 	{

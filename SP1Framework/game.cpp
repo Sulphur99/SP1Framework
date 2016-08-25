@@ -9,6 +9,7 @@
 #include "Transition.h"
 #include "Interact.h"
 #include "Inventory.h"
+#include "LoadMap.h"
 
 double  g_dElapsedTime;
 double  g_dDeltaTime;
@@ -26,6 +27,7 @@ int g_level = 1;
 int map = 0;
 bool load = false;
 char grid[80][26];
+char g_Mapping[14][80][26];
 int memory;
 int key = 0;
 
@@ -115,11 +117,11 @@ void update(double dt)
 
 	switch (g_eGameState)
 	{
-	case S_SPLASHSCREEN: splashScreenWait(); // game logic for the splash screen
+	 case S_SPLASHSCREEN: splashScreenWait(); // game logic for the splash screen
 		break;
-	case S_GAME: gameplay(); // gameplay logic when we are in the game
-		break;
-	case S_INVENTORY:gameplay();
+	 //case S_LOAD: loadmap();
+		//break;
+	 case S_GAME: gameplay(); // gameplay logic when we are in the game
 		break;
 	}
 }
@@ -136,11 +138,11 @@ void render()
 	clearScreen();      // clears the current screen and draw from scratch 
 	switch (g_eGameState)
 	{
-	case S_SPLASHSCREEN: renderSplashScreen();
+	 case S_SPLASHSCREEN: renderSplashScreen();
 		break;
-	case S_GAME: renderGame();
-		break;
-	case S_INVENTORY:renderGame();
+	 //case S_LOAD: loadmap;
+		// break;
+	 case S_GAME: renderGame();
 		break;
 	}
 	renderFramerate();  // renders debug information, frame rate, elapsed time, etc
@@ -151,51 +153,18 @@ void splashScreenWait()    // waits for time to pass in splash screen
 {
 	if (g_dElapsedTime > 3.0)
 	{// wait for 3 seconds to switch to game mode, else do nothing
-		g_eGameState = S_GAME;
 		map = 1;
 		load = true;
+		g_eGameState = S_GAME;
 	}
 }
 
 void gameplay()            // gameplay logic
 {
 	processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
-	if (load == true)
-	{
-		switch (map)
-		{
-		case 1: loadMap1();
-			break;
-		case 2: loadMap2();
-			break;
-		case 3: loadMap3();
-			break;
-		case 4: loadMap4();
-			break;
-		case 5: loadMap5();
-			break;
-		case 6: loadMap6();
-			break;
-		case 7: loadMap7();
-			break;
-		case 8: loadMap8();
-			break;
-		case 9: loadMap9();
-			break;
-		case 10: loadMap10();
-			break;
-		case 11: loadMap11();
-			break;
-		case 12: loadMap12();
-			break;
-		case 13: loadMap13();
-			break;
-		}
-		load = false;
-	}
 	moveCharacter();    // moves the character, collision detection, physics, etc
-	transition();					
-						// sound can be played here too.
+	transition();										
+	// sound can be played here too.
 }
 
 void moveCharacter()
@@ -250,12 +219,11 @@ void processUserInput()
 	if (g_abKeyPressed[K_INTERACT])
 	{
 		setText = false;
-		checkobj = checkinteract(g_level);
+		checkobj = checkinteract(map);
 		Interact(checkobj);
-
 	}
 }
-
+//grid[100][50]
 void clearScreen()
 {
 	// Clears the buffer with this colour attribute
@@ -279,12 +247,8 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
 	renderMap();// renders the map to the buffer first
-	inventory();
-
-	if (map != 13)
-	{
-		renderCharacter();// renders the character into the buffer
-	}
+	renderCharacter();// renders the character into the buffer
+	renderFeed();
 }
 
 
@@ -299,7 +263,7 @@ void renderMap()
 	};
 
 	COORD c;
-
+	loadmap();
 	for (int y = 0; y < 26; y++)
 	{
 		c.Y = y;
@@ -340,7 +304,6 @@ void renderFeed()
 	string text;
 	int textSize;
 
-
 	if (Activity_feed == 1 && !setText)
 	{
 		text = "Curses! A wall blocks your way.";
@@ -378,6 +341,7 @@ void renderFeed()
 		}
 		setText = true;
 	}
+
 	if (Activity_feed == 3 && !setText)
 	{
 		text = "The door's locked.";
