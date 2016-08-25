@@ -2,6 +2,7 @@
 
 extern Console g_Console;
 extern bool load;
+extern char grid[80][26];
 
 void Mapping(int map)
 {
@@ -39,8 +40,6 @@ void Mapping(int map)
 		case 12:read.open("Level3.7.txt");
 			break;
 		case 13: read.open("Level3.8.txt");
-			break;
-		case 14:read.open("Inventory.txt");
 			break;
 		}
 		load = false;

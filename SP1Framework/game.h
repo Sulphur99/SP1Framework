@@ -16,11 +16,12 @@ enum EKEYS
     K_DOWN,
     K_LEFT,
     K_RIGHT,
-	K_INTERACT,
     K_ESCAPE,
     K_SPACE,
-    K_COUNT,
-	K_I
+	K_I,
+	K_J,
+	K_Z,
+	K_COUNT
 };
 
 // Enumeration for the different screen states
@@ -59,9 +60,5 @@ void renderCharacter();     // renders the character into the buffer
 void renderFramerate();     // renders debug information, frame rate, elapsed time, etc
 void renderToScreen();      // dump the contents of the buffer to the screen, one frame worth of game
 void renderFeed();
-//void loadmap();
-void renderload();
-//int checkinteract(int g_number);
-//int Interact(int checkobj);
 
 #endif // _GAME_H

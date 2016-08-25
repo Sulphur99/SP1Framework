@@ -5,4 +5,6 @@
 #include <iomanip>
 #include <sstream>
 
-void inventory();
+//void inventory();
+void loadInv();
+void renderInv();

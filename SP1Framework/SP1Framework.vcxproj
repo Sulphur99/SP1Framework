@@ -83,7 +83,6 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Interact.cpp" />
     <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="LoadMap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mapping.cpp" />
     <ClCompile Include="Transition.cpp" />

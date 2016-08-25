@@ -89,10 +89,11 @@ void getInput(void)
 	g_abKeyPressed[K_DOWN] = isKeyPressed(VK_DOWN);
 	g_abKeyPressed[K_LEFT] = isKeyPressed(VK_LEFT);
 	g_abKeyPressed[K_RIGHT] = isKeyPressed(VK_RIGHT);
-	g_abKeyPressed[K_INTERACT] = isKeyPressed(0x5A);
+	g_abKeyPressed[K_Z] = isKeyPressed(0x5A);//Z
 	g_abKeyPressed[K_SPACE] = isKeyPressed(VK_SPACE);
 	g_abKeyPressed[K_ESCAPE] = isKeyPressed(VK_ESCAPE);
-	g_abKeyPressed[K_I] = isKeyPressed(0x49);
+	g_abKeyPressed[K_I] = isKeyPressed(0x49);//I
+	g_abKeyPressed[K_J] = isKeyPressed(0x4A);//J
 }
 
 //--------------------------------------------------------------
@@ -119,10 +120,9 @@ void update(double dt)
 	{
 	 case S_SPLASHSCREEN: splashScreenWait(); // game logic for the splash screen
 		break;
-	 //case S_LOAD: loadmap();
-		//break;
 	 case S_GAME: gameplay(); // gameplay logic when we are in the game
 		break;
+	 case S_INVENTORY: processUserInput(); //key updates here -SY
 	}
 }
 //--------------------------------------------------------------
@@ -140,10 +140,11 @@ void render()
 	{
 	 case S_SPLASHSCREEN: renderSplashScreen();
 		break;
-	 //case S_LOAD: loadmap;
-		// break;
 	 case S_GAME: renderGame();
 		break;
+	 case S_INVENTORY: loadInv();
+		 renderInv();
+		 break;
 	}
 	renderFramerate();  // renders debug information, frame rate, elapsed time, etc
 	renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
@@ -216,14 +217,30 @@ void processUserInput()
 	// quits the game if player hits the escape key
 	if (g_abKeyPressed[K_ESCAPE])
 		g_bQuitGame = true;
-	if (g_abKeyPressed[K_INTERACT])
+	if (g_abKeyPressed[K_Z])
 	{
 		setText = false;
 		checkobj = checkinteract(map);
 		Interact(checkobj);
 	}
+	switch (g_eGameState)
+	{
+		case S_GAME:
+			if (g_abKeyPressed[K_I])
+			{
+				g_eGameState = S_INVENTORY;
+			}
+			break;
+		case S_INVENTORY:
+			if (g_abKeyPressed[K_J])
+			{
+				g_eGameState = S_GAME;
+			}
+			break;
+	}
+
 }
-//grid[100][50]
+
 void clearScreen()
 {
 	// Clears the buffer with this colour attribute
@@ -263,7 +280,7 @@ void renderMap()
 	};
 
 	COORD c;
-	loadmap();
+	Mapping(map);
 	for (int y = 0; y < 26; y++)
 	{
 		c.Y = y;

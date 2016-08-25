@@ -8,7 +8,7 @@ void transition()
 {
 	bool loaded = false;
 
-	if (g_sChar.m_cLocation.X == 78 && g_sChar.m_cLocation.Y == 10) //right to left
+	if (g_sChar.m_cLocation.X == 79 && g_sChar.m_cLocation.Y == 10) //right to left
 	{
 		if (map == 1)//1-2
 		{
@@ -43,7 +43,7 @@ void transition()
 		if (loaded = true)
 		{
 			load = true;
-			g_sChar.m_cLocation.X = 2;
+			g_sChar.m_cLocation.X = 1;
 			g_sChar.m_cLocation.Y = 10;
 		}
 		else
@@ -51,7 +51,7 @@ void transition()
 			load = false;
 		}
 	}
-	if (g_sChar.m_cLocation.X == 1 && g_sChar.m_cLocation.Y == 10) //left to right
+	if (g_sChar.m_cLocation.X == 0 && g_sChar.m_cLocation.Y == 10) //left to right
 	{
 		if (map == 2)//2-1
 		{
@@ -86,7 +86,7 @@ void transition()
 		if (loaded = true)
 		{
 			load = true;
-			g_sChar.m_cLocation.X = 77;
+			g_sChar.m_cLocation.X = 78;
 			g_sChar.m_cLocation.Y = 10;
 		}
 	}
