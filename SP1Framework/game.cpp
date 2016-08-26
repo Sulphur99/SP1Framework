@@ -245,21 +245,39 @@ void processUserInput()
 void clearScreen()
 {
 	// Clears the buffer with this colour attribute
-	g_Console.clearBuffer(0x1F);
+	g_Console.clearBuffer();
 }
 
 void renderSplashScreen()  // renders the splash screen
-{
+{	
 	COORD c = g_Console.getConsoleSize();
-	c.Y /= 3;
-	c.X = c.X / 2 - 9;
-	g_Console.writeToBuffer(c, "A game in 3 seconds", 0x03);
+	c.Y = 5;
+	c.X = g_Console.getConsoleSize().X / 2 - 33;
+	
+	g_Console.writeToBuffer(c,"___________                                                        " , 0x01);
 	c.Y += 1;
-	c.X = g_Console.getConsoleSize().X / 2 - 20;
-	g_Console.writeToBuffer(c, "Press <Space> to change character colour", 0x09);
+	g_Console.writeToBuffer(c, "\\__    ___/_______   ____  _____     ______ __ __ _______   ____   ", 0x02);
 	c.Y += 1;
-	c.X = g_Console.getConsoleSize().X / 2 - 9;
-	g_Console.writeToBuffer(c, "Press 'Esc' to quit", 0x09);
+	g_Console.writeToBuffer(c, "  |    |   \\_  __ \\_/ __ \\ \\__  \\   /  ___/|  |  \\\\_  __ \\_/ __ \\  ", 0x03);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, "  |    |    |  | \\/\\  ___/  / __ \\_ \\___ \\ |  |  / |  | \\/\\  ___/  ", 0x04);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, "  |____|    |__|    \\___  >(____  //____  >|____/  |__|    \\___  > ", 0x05);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, "                        \\/      \\/      \\/                     \\/  ", 0x06);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, "  ___ ___                   __                                     ", 0x07);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, " /   |   \\  __ __   ____  _/  |_   ____  _______                   ", 0x08);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, "/    ~    \\|  |  \\ /    \\ \\   __\\_/ __ \\ \\_  __ \\                  ", 0x09);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, "\\    Y    /|  |  /|   |  \\ |  |  \\  ___/  |  | \\/                  ", 0xA);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, " \\___|_  / |____/ |___|  / |__|   \\___  > |__|                     ", 0xB);
+	c.Y += 1;
+	g_Console.writeToBuffer(c, "       \\/              \\/             \\/                           ", 0xC);
+
 }
 
 void renderGame()
@@ -342,7 +360,7 @@ void renderFramerate()
 	ss << g_dElapsedTime << "secs";
 	c.X = 0;
 	c.Y = 0;
-	g_Console.writeToBuffer(c, ss.str(), 0x59);
+	g_Console.writeToBuffer(c, ss.str());
 }
 void renderToScreen()
 {
