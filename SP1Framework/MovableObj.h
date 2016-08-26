@@ -1,5 +1,5 @@
-#ifndef _COLLISION_H
-#define _COLLISION_H
+#ifndef _MOVABLEOBJ_H
+#define _MOVABLEOBJ_H
 
 #include <string>
 #include <fstream>
@@ -8,8 +8,8 @@
 #include "Mapping.h"
 #include "game.h"
 #include <windows.h>
-#include "MovableObj.h"
 
-bool collision(int g_number);
+int checkMobj();
+void MoveObj(int checkobj);
 
-#endif // End _COLLISION_H
+#endif // END _MOVEABlE_H

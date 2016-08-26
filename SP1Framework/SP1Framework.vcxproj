@@ -86,6 +86,8 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mapping.cpp" />
+    <ClCompile Include="MovableObj.cpp" />
+    <ClCompile Include="Puzzles.cpp" />
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +100,8 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="LoadMap.h" />
     <ClInclude Include="Mapping.h" />
+    <ClInclude Include="MovableObj.h" />
+    <ClInclude Include="Puzzles.h" />
     <ClInclude Include="Transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,6 @@
 #ifndef _MAPPING_H
 #define _MAPPING_H
+
 #include <iostream>
 #include <string>
 #include <fstream>

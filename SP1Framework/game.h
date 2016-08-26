@@ -5,6 +5,7 @@
 #include "Mapping.h"
 #include "collision.h"
 #include "Interact.h"
+#include "Puzzles.h"
 
 extern CStopWatch g_swTimer;
 extern bool g_bQuitGame;

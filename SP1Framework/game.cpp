@@ -170,7 +170,11 @@ void gameplay()            // gameplay logic
 {
 	processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
 	moveCharacter();    // moves the character, collision detection, physics, etc
-	transition();										
+	transition();
+	if (map == 8)
+	{
+		puzzle3_3();
+	}
 	// sound can be played here too.
 }
 
@@ -255,12 +259,12 @@ void clearScreen()
 }
 
 void renderSplashScreen()  // renders the splash screen
-{	
+{
 	COORD c = g_Console.getConsoleSize();
 	c.Y = 5;
 	c.X = g_Console.getConsoleSize().X / 2 - 33;
-	
-	g_Console.writeToBuffer(c,"___________                                                        " , 0x01);
+
+	g_Console.writeToBuffer(c, "___________                                                        ", 0x01);
 	c.Y += 1;
 	g_Console.writeToBuffer(c, "\\__    ___/_______   ____  _____     ______ __ __ _______   ____   ", 0x02);
 	c.Y += 1;
