@@ -7,6 +7,7 @@ int Activity_feed = 0;
 extern char grid[80][26];
 extern double g_dElapsedTime;
 extern bool setText;
+extern int key;
 
 int checkinteract(int g_number)
 {
@@ -61,22 +62,22 @@ int checkinteract(int g_number)
 		return 2;
 	}
 
-	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'D')
+	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'D' && key == 0)
 	{
 		return 3;
 	}
 
-	if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'D')
+	if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'D' && key == 0)
 	{
 		return 3;
 	}
 
-	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == 'D')
+	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == 'D' && key == 0)
 	{
 		return 3;
 	}
 
-	if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'D')
+	if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'D' && key == 0)
 	{
 		return 3;
 	}
@@ -195,7 +196,7 @@ void renderFeed()
 	{
 		text = "It's a pillar.";
 		textSize = sizeof(text);
-		int newTime = g_dElapsedTime + 1.0;
+		double newTime = g_dElapsedTime + 1.0;
 
 		g_Console.writeToBuffer(c, text, 0x02);
 

@@ -10,6 +10,7 @@
 #include "Interact.h"
 #include "Inventory.h"
 #include "LoadMap.h"
+#include "Chest.h"
 
 double  g_dElapsedTime;
 double  g_dDeltaTime;
@@ -29,8 +30,11 @@ bool load = false;
 char grid[80][26];
 char g_Mapping[14][80][26];
 int memory;
-int key = 0;
-char keypiece = 50;
+int key = 1;
+char keypiece = 48;
+int check = 0;
+int value = 0;
+int access4 = 1;
 
 // Console object
 Console g_Console(80, 25, "SP1 Framework");
@@ -95,6 +99,7 @@ void getInput(void)
 	g_abKeyPressed[K_ESCAPE] = isKeyPressed(VK_ESCAPE);
 	g_abKeyPressed[K_I] = isKeyPressed(0x49);//I
 	g_abKeyPressed[K_J] = isKeyPressed(0x4A);//J
+	g_abKeyPressed[K_K] = isKeyPressed(0x4B);//K
 }
 
 //--------------------------------------------------------------
@@ -200,6 +205,7 @@ void moveCharacter()
 		//Beep(1440, 30);
 		g_sChar.m_cLocation.X++;
 		bSomethingHappened = true;
+
 	}
 
 	if (g_abKeyPressed[K_SPACE])
@@ -284,6 +290,7 @@ void renderGame()
 {
 	renderMap();// renders the map to the buffer first
 	renderCharacter();// renders the character into the buffer
+	renderChests();
 	renderFeed();
 }
 
@@ -321,7 +328,6 @@ void renderMap()
 			g_Console.writeToBuffer(c, grid[x][y]);
 		}
 	}
-
 	/*COORD c;
 	for (int i = 0; i < 12; ++i)
 	{
