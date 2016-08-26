@@ -21,6 +21,11 @@ void transition()
 			map = 5;
 			loaded = true;
 		}
+		else if (map == 5)//endgame
+		{
+			map = 14;
+			loaded = true;
+		}
 		else if (map == 6)//6-9
 		{
 			map = 9;

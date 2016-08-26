@@ -160,7 +160,7 @@ void splashScreenWait()    // waits for time to pass in splash screen
 {
 	if (g_dElapsedTime > 3.0)
 	{// wait for 3 seconds to switch to game mode, else do nothing
-		map = 1;
+		map = 5;
 		load = true;
 		g_eGameState = S_GAME;
 	}
@@ -293,7 +293,10 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
 	renderMap();// renders the map to the buffer first
-	renderCharacter();// renders the character into the buffer
+	if (map != 14)
+	{
+		renderCharacter(); // renders the character into the buffer
+	}
 	renderChests();
 	renderFeed();
 }

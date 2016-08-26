@@ -41,6 +41,8 @@ void Mapping(int map)
 			break;
 		case 13: read.open("Level3.8.txt");
 			break;
+		case 14: read.open("WIN_SCREEN.txt");
+			break;
 		}
 		load = false;
 	}
