@@ -9,14 +9,15 @@ extern int check;
 extern int map;
 extern char keypiece;
 extern int value;
+int access = 1;
+int access2 = 1;
+int access3 = 1;
 extern int access4;
 void renderChests()
 {
-	int access = 1;
-	int access2 = 1;
-	int access3 = 1;
 
-	if (key == 1 && grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'D' && g_abKeyPressed[K_Z])
+
+	if (key > 0 && grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'D' && g_abKeyPressed[K_Z])
 	{
 		grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] = '-';
 		key -= 1;

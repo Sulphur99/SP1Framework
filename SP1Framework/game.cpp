@@ -30,7 +30,7 @@ bool load = false;
 char grid[80][26];
 char g_Mapping[14][80][26];
 int memory;
-int key = 1;
+int key = 2;
 char keypiece = 48;
 int check = 0;
 int value = 0;
