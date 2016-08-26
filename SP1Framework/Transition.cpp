@@ -3,6 +3,7 @@ extern EGAMESTATES g_eGameState;
 extern SGameChar g_sChar;
 extern int map;
 extern bool load;
+extern char grid[80][26];
 
 void transition()
 {
@@ -57,6 +58,7 @@ void transition()
 		{
 			map = 1;
 			loaded = true;
+			grid[80][11] = (char)176;
 		}
 		else if (map == 5)//5-2
 		{

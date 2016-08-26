@@ -9,6 +9,8 @@ COORD a;
 extern double g_dElapsedTime;
 extern double g_dBounceTime;
 extern char keypiece;
+extern EGAMESTATES g_eGameState;
+extern int access4;
 
 //void inventory()
 //{
@@ -123,6 +125,16 @@ void renderInv()
 				a.X += 1;
 			}
 			g_Console.writeToBuffer(a, keypiece);
+		}
+		if (keypiece == 50 && g_eGameState == S_INVENTORY && g_abKeyPressed[K_K])
+		{
+			keypiece -= 2;
+			key += 1;
+		}
+		if (keypiece == 52 && g_eGameState == S_INVENTORY && g_abKeyPressed[K_K] && access4 == 0)
+		{
+			keypiece -= 4;
+			key += 1;
 		}
 	}
 }
