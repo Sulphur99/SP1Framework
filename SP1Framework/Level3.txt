@@ -12,11 +12,11 @@ W---------------------------M-W------------------------------------------------D
 W-----------------------------W------------------W-----------------------------W
 W---P---P---P---P---P---P---P-W------------------W---P---P---P---P---P---P---P-W
 W-----------------------------W------------------W-----------------------------W
-WWWWWWWWWW-WWWWWWWWWWWWWWWWWWWWWWWW-WWWW-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-W----------------W--------------------W-------W-------------WWW--------WWW-----W
-W----------------W--------------------WWWWWWW----WWWWWWWWW--------WWW-------WWWW
-W-------------------------------------WWW---WWWWWWWW-----WWWWWWWWW---WWW-WWWWWWW
-W----------------W--------------------W---W----------WWW-----------W-----------W
+WWWWWWWWWWOWWWWWWWWWWWWWWWWWWWWWWWW-WWWW-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+W-----O--O--O----W--O---O-O----O--O---W-------W-------------WWW--------WWW-----W
+W---O--O-----O---W-O--O---O--O--O-----WWWWWWW----WWWWWWWWW--------WWW-------WWWW
+W----O--O-O-O-O-OO--O----O------O---O-WWW---WWWWWWWW-----WWWWWWWWW---WWW-WWWWWWW
+W--O---O----O----W-----O----O-----O---W---W----------WWW-----------W-----------W
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW--WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------

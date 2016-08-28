@@ -85,6 +85,7 @@
     <ClCompile Include="Interact.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mainmenu.cpp" />
     <ClCompile Include="Mapping.cpp" />
     <ClCompile Include="MovableObj.cpp" />
     <ClCompile Include="Puzzles.cpp" />
@@ -99,10 +100,31 @@
     <ClInclude Include="Interact.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="LoadMap.h" />
+    <ClInclude Include="Mainmenu.h" />
     <ClInclude Include="Mapping.h" />
     <ClInclude Include="MovableObj.h" />
     <ClInclude Include="Puzzles.h" />
     <ClInclude Include="Transition.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Inventory.txt" />
+    <Text Include="Inventorytext.txt" />
+    <Text Include="Level1.txt" />
+    <Text Include="Level2.1.txt" />
+    <Text Include="Level2.2.txt" />
+    <Text Include="Level2.txt" />
+    <Text Include="Level3.1.txt" />
+    <Text Include="Level3.2.txt" />
+    <Text Include="Level3.3.txt" />
+    <Text Include="Level3.3ANS.txt" />
+    <Text Include="Level3.4.txt" />
+    <Text Include="Level3.5.txt" />
+    <Text Include="Level3.6.txt" />
+    <Text Include="Level3.7.txt" />
+    <Text Include="Level3.8.txt" />
+    <Text Include="Level3.txt" />
+    <Text Include="Mainmenu.txt" />
+    <Text Include="WIN_SCREEN.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

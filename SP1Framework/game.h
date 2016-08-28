@@ -6,6 +6,7 @@
 #include "collision.h"
 #include "Interact.h"
 #include "Puzzles.h"
+#include "Mainmenu.h"
 
 extern CStopWatch g_swTimer;
 extern bool g_bQuitGame;
@@ -23,6 +24,7 @@ enum EKEYS
 	K_J,
 	K_K,
 	K_Z,
+	K_ENTER,
 	K_COUNT
 };
 
@@ -30,10 +32,11 @@ enum EKEYS
 enum EGAMESTATES
 {
     S_SPLASHSCREEN,
-	S_LOAD,
+	S_MAINMENU,	
+	S_CONTROLSPAGE,
     S_GAME,
     S_COUNT,
-	S_INVENTORY
+	S_INVENTORY,
 };
 
 // struct for the game character
@@ -42,6 +45,12 @@ struct SGameChar
     COORD m_cLocation;
     bool  m_bActive;
 	int Key;
+};
+
+// struct for selector(SY)
+struct SGameSelector
+{
+	COORD c_cLocation;
 };
 
 void init        ( void );      // initialize your variables, allocate memory, etc

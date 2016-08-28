@@ -41,6 +41,7 @@ int checkMobj()
 		return 0;
 	}
 }
+
 void MoveObj(int checkMobj)
 {
 	int obj = checkMobj;

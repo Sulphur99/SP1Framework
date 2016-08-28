@@ -49,16 +49,33 @@ void Mapping(int map)
 	
 	if (read.is_open())
 	{
-		while (height < 25)
+		if (map != 14)
 		{
-			while (width < 80)
+			while (height < 20)
 			{
-				read >> grid[width][height];
-				width++;
+				while (width < 80)
+				{
+					read >> grid[width][height];
+					width++;
+				}
+				height++;
+				width = 0;
 			}
-			height++;
-			width = 0;
+			read.close();
 		}
-		read.close();
+		else
+		{
+			while (height < 25)
+			{
+				while (width < 80)
+				{
+					read >> grid[width][height];
+					width++;
+				}
+				height++;
+				width = 0;
+			}
+			read.close();
+		}
 	}
 }

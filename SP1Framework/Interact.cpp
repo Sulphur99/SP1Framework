@@ -169,7 +169,7 @@ void renderFeed()
 {
 	COORD c = g_Console.getConsoleSize();
 	c.X = 0;
-	c.Y = 20;
+	c.Y = 21;
 	string text;
 	int textSize;
 

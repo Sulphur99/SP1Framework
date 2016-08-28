@@ -22,19 +22,24 @@ ifstream read;
 
 // Game specific variables here
 SGameChar   g_sChar;
+SGameSelector g_sSelector;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN;
 double  g_dBounceTime; // this is to prevent key bouncing, so we won't trigger keypresses more than once
-int g_level = 1;
 int map = 0;
 bool load = false;
 char grid[80][26];
-char g_Mapping[14][80][26];
 int memory;
 int key = 2;
 char keypiece = 48;
 int check = 0;
 int value = 0;
 int access4 = 1;
+
+//Torchlight
+int MinX;
+int MaxX;
+int MinY;
+int MaxY;
 
 // Console object
 Console g_Console(80, 25, "SP1 Framework");
@@ -57,6 +62,9 @@ void init(void)
 
 	g_sChar.m_cLocation.X = g_Console.getConsoleSize().X / 2;
 	g_sChar.m_cLocation.Y = g_Console.getConsoleSize().Y / 2;
+	g_sSelector.c_cLocation.X = 32;
+	g_sSelector.c_cLocation.Y = 11;
+
 	g_sChar.m_bActive = true;
 	// sets the width, height and the font name to use in the console
 	g_Console.setConsoleFont(0, 16, L"Raster");
@@ -100,6 +108,7 @@ void getInput(void)
 	g_abKeyPressed[K_I] = isKeyPressed(0x49);//I
 	g_abKeyPressed[K_J] = isKeyPressed(0x4A);//J
 	g_abKeyPressed[K_K] = isKeyPressed(0x4B);//K
+	g_abKeyPressed[K_ENTER] = isKeyPressed(0x0D);//Enter
 }
 
 //--------------------------------------------------------------
@@ -126,6 +135,8 @@ void update(double dt)
 	{
 	 case S_SPLASHSCREEN: splashScreenWait(); // game logic for the splash screen
 		break;
+	 case S_MAINMENU: menu();
+		 break;
 	 case S_GAME: gameplay(); // gameplay logic when we are in the game
 		break;
 	 case S_INVENTORY: processUserInput(); //key updates here -SY
@@ -146,6 +157,8 @@ void render()
 	{
 	 case S_SPLASHSCREEN: renderSplashScreen();
 		break;
+	 case S_MAINMENU: rendermenu();
+		 break;
 	 case S_GAME: renderGame();
 		break;
 	 case S_INVENTORY: loadInv();
@@ -160,9 +173,8 @@ void splashScreenWait()    // waits for time to pass in splash screen
 {
 	if (g_dElapsedTime > 3.0)
 	{// wait for 3 seconds to switch to game mode, else do nothing
-		map = 1;
 		load = true;
-		g_eGameState = S_GAME;
+		g_eGameState = S_MAINMENU;
 	}
 }
 
@@ -209,9 +221,7 @@ void moveCharacter()
 		//Beep(1440, 30);
 		g_sChar.m_cLocation.X++;
 		bSomethingHappened = true;
-
 	}
-
 	if (g_abKeyPressed[K_SPACE])
 	{
 		g_sChar.m_bActive = !g_sChar.m_bActive;
@@ -249,7 +259,6 @@ void processUserInput()
 			}
 			break;
 	}
-
 }
 
 void clearScreen()
@@ -314,25 +323,93 @@ void renderMap()
 
 	COORD c;
 	Mapping(map);
-	for (int y = 0; y < 26; y++)
+
+	char txt[80][5];
+	for (int y = 0; y < 5; y++)
 	{
-		c.Y = y;
+		c.Y = y + 20;
 		for (int x = 0; x < 80; x++)
 		{
-			if (grid[x][y] == '-')
+			if(y == 0)
 			{
-				grid[x][y] = (char)176;
+				txt[x][y] = (char)178;
 			}
-			if (grid[x][y] == 'W')
+			else
 			{
-				grid[x][y] = (char)178;
-			}
-			if (grid[x][y] == '\n')
-			{
-				grid[x][y] = ' ';
+				txt[x][y] = (char)176;
 			}
 			c.X = x;
-			g_Console.writeToBuffer(c, grid[x][y]);
+			g_Console.writeToBuffer(c, txt[x][y]);
+		}
+	}
+
+	MinX = g_sChar.m_cLocation.X - 4;
+	MaxX = g_sChar.m_cLocation.X + 5;
+	MinY = g_sChar.m_cLocation.Y - 2;
+	MaxY = g_sChar.m_cLocation.Y + 3;
+
+	if (map != 14)
+	{
+		if (g_sChar.m_cLocation.X <= 4)
+		{
+			MinX = 0;
+		}
+		if (g_sChar.m_cLocation.Y <= 2)
+		{
+			MinY = 0;
+		}
+		if (g_sChar.m_cLocation.X >= 78)
+		{
+			MaxX = 80;
+		}
+		if (g_sChar.m_cLocation.Y >= 18)
+		{
+			MaxY = 20;
+		}
+		for (int y = MinY; y < MaxY; y++)
+		{
+			c.Y = y;
+			for (int x = MinX; x < MaxX; x++)
+			{
+				if (grid[x][y] == '-')
+				{
+					grid[x][y] = (char)176;
+				}
+				if (grid[x][y] == 'W')
+				{
+					grid[x][y] = (char)178;
+				}
+				if (grid[x][y] == '\n')
+				{
+					grid[x][y] = ' ';
+				}
+				c.X = x;
+				g_Console.writeToBuffer(c, grid[x][y]);
+			}
+		}
+	}
+	else
+	{
+		for (int y = 0; y < 26; y++)
+		{
+			c.Y = y;
+			for (int x = 0; x < 80; x++)
+			{
+				if (grid[x][y] == '-')
+				{
+					grid[x][y] = (char)176;
+				}
+				if (grid[x][y] == 'W')
+				{
+					grid[x][y] = (char)178;
+				}
+				if (grid[x][y] == '\n')
+				{
+					grid[x][y] = ' ';
+				}
+				c.X = x;
+				g_Console.writeToBuffer(c, grid[x][y]);
+			}
 		}
 	}
 	/*COORD c;
@@ -344,7 +421,6 @@ void renderMap()
 	g_Console.writeToBuffer(c, " °±²Û", colors[i]);
 	}*/
 }
-
 
 void renderCharacter()
 {

@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Framework">
       <UniqueIdentifier>{37c19c94-9502-4b2b-b3f1-70fa908b49af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Maps">
+      <UniqueIdentifier>{18562cdc-ed21-4d4e-8ad8-83a287ae5209}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -55,6 +58,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MovableObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mainmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,5 +101,64 @@
     <ClInclude Include="MovableObj.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Mainmenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Level1.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level2.1.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level2.2.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level2.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.1.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.2.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.3.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.3ANS.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.4.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.5.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.6.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.7.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.8.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Level3.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Mainmenu.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="WIN_SCREEN.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Inventory.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
+    <Text Include="Inventorytext.txt">
+      <Filter>Resource Files\Maps</Filter>
+    </Text>
   </ItemGroup>
 </Project>
