@@ -187,6 +187,16 @@ void gameplay()            // gameplay logic
 	{
 		puzzle3_3();
 	}
+	if (map == 12)
+	{
+		puzzle3_7();
+	}
+	if (map == 9)
+	{
+		puzzle3_4_1();
+		puzzle3_4_2();
+		puzzle3_4_3();
+	}
 	// sound can be played here too.
 }
 
