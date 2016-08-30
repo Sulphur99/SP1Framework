@@ -10,6 +10,9 @@
 #include "Interact.h"
 #include "Inventory.h"
 #include "Chest.h"
+#include "Windows.h"
+#include <Windows.h>
+#include "MMSystem.h"
 
 double  g_dElapsedTime;
 double  g_dDeltaTime;
@@ -68,7 +71,7 @@ void init(void)
 	// sets the width, height and the font name to use in the console
 	g_Console.setConsoleFont(0, 16, L"Raster");
 
-	//PlaySound(TEXT("Music/Gundam Unicorn - MOBILE SUIT.mp3"), NULL, SND_SYNC |SND_LOOP | SND_ASYNC);
+	PlaySound(TEXT("Gundam Unicorn - MOBILE SUIT.wav"), NULL, SND_SYNC | SND_LOOP | SND_ASYNC); // Plays music
 
 }
 
