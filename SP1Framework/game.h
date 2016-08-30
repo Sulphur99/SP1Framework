@@ -7,6 +7,7 @@
 #include "Interact.h"
 #include "Puzzles.h"
 #include "Mainmenu.h"
+#include "reset.h"
 
 extern CStopWatch g_swTimer;
 extern bool g_bQuitGame;
@@ -14,16 +15,17 @@ extern bool g_bQuitGame;
 // Enumeration to store the control keys that your game will have
 enum EKEYS
 {
-    K_UP,
-    K_DOWN,
-    K_LEFT,
-    K_RIGHT,
-    K_ESCAPE,
-    K_SPACE,
+	K_UP,
+	K_DOWN,
+	K_LEFT,
+	K_RIGHT,
+	K_ESCAPE,
+	K_SPACE,
 	K_I,
 	K_J,
 	K_K,
 	K_Z,
+	K_R,
 	K_ENTER,
 	K_COUNT
 };

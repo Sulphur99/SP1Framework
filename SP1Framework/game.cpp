@@ -111,6 +111,7 @@ void getInput(void)
 	g_abKeyPressed[K_I] = isKeyPressed(0x49);//I
 	g_abKeyPressed[K_J] = isKeyPressed(0x4A);//J
 	g_abKeyPressed[K_K] = isKeyPressed(0x4B);//K
+	g_abKeyPressed[K_R] = isKeyPressed(0x52);//R
 	g_abKeyPressed[K_ENTER] = isKeyPressed(0x0D);//Enter
 }
 
@@ -190,6 +191,16 @@ void gameplay()            // gameplay logic
 	{
 		puzzle3_3();
 	}
+	if (map == 12)
+	{
+		puzzle3_7();
+	}
+	if (map == 9)
+	{
+		puzzle3_4_1();
+		puzzle3_4_2();
+		puzzle3_4_3();
+	}
 	// sound can be played here too.
 }
 
@@ -246,6 +257,10 @@ void processUserInput()
 		setText = false;
 		checkobj = checkinteract(map);
 		Interact(checkobj);
+	}
+	if (g_abKeyPressed[K_R])
+	{
+		reset();
 	}
 	switch (g_eGameState)
 	{
@@ -352,7 +367,8 @@ void renderMap()
 	MaxY = g_sChar.m_cLocation.Y + 3;
 
 	if (map != 14)
-	{
+	{	
+		WORD mapColor = 0x89;
 		if (g_sChar.m_cLocation.X <= 4)
 		{
 			MinX = 0;
@@ -396,7 +412,7 @@ void renderMap()
 				}
 
 				c.X = x;
-				g_Console.writeToBuffer(c, grid[x][y]);
+				g_Console.writeToBuffer(c, grid[x][y], mapColor);
 			}
 		}
 	}
@@ -442,7 +458,7 @@ void renderCharacter()
 	{
 		charColor = 0x0A;
 	}
-	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);
+	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);//
 }
 
 void renderFramerate()
