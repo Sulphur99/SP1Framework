@@ -183,25 +183,6 @@ void renderFeed()
 	string text;
 	int textSize;
 
-	if (Activity_feed == 1 && !setText)
-	{
-		text = "Curses! A wall blocks your way.";
-		textSize = sizeof(text);
-		double newTime = g_dElapsedTime + 1.0;
-
-		g_Console.writeToBuffer(c, text, 0x02);
-
-		if (g_dElapsedTime > newTime)
-		{
-			for (int i = 0; i < textSize; i++)
-			{
-				g_Console.writeToBuffer(c, " ");
-				c.X++;
-			}
-		}
-		setText = true;
-	}
-
 	if (Activity_feed == 2 && !setText)
 	{
 		text = "It's a pillar.";
@@ -289,7 +270,7 @@ void renderFeed()
 	{
 		if (map == 1)
 		{
-			text = "You can push boulders by walking up to them.";
+			text = "You can push boulders[O] to get them out of your way.";
 			g_Console.writeToBuffer(c, text, 0x02);
 		}
 		
@@ -328,6 +309,25 @@ void renderFeed()
 	{
 		text = "The chest was empty.";
 		g_Console.writeToBuffer(c, text, 0x02);
+	}
+
+	if (Activity_feed == 1 && !setText)
+	{
+		text = "Curses! A wall blocks your way.";
+		textSize = sizeof(text);
+		double newTime = g_dElapsedTime + 1.0;
+
+		g_Console.writeToBuffer(c, text, 0x02);
+
+		if (g_dElapsedTime > newTime)
+		{
+			for (int i = 0; i < textSize; i++)
+			{
+				g_Console.writeToBuffer(c, " ");
+				c.X++;
+			}
+		}
+		setText = true;
 	}
 
 	/*if (Activity_feed == 5)

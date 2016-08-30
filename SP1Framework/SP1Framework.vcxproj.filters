@@ -95,9 +95,6 @@
     <ClInclude Include="Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LoadMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Chest.h">
       <Filter>Header Files</Filter>
     </ClInclude>

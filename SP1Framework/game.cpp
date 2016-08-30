@@ -9,7 +9,6 @@
 #include "Transition.h"
 #include "Interact.h"
 #include "Inventory.h"
-#include "LoadMap.h"
 #include "Chest.h"
 
 double  g_dElapsedTime;
@@ -29,7 +28,7 @@ int map = 0;
 bool load = false;
 char grid[80][26];
 int memory;
-int key = 1;
+int key = 0;
 char keypiece = 48;
 int check = 0;
 int value = 0;
