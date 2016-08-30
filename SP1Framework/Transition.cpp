@@ -23,8 +23,7 @@ void transition()
 		}
 		else if (map == 5)//endgame
 		{
-			map = 14;
-			loaded = true;
+			g_eGameState = S_ENDGAME;
 		}
 		else if (map == 6)//6-9
 		{

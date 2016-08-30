@@ -29,7 +29,7 @@ int map = 0;
 bool load = false;
 char grid[80][26];
 int memory;
-int key = 0;
+int key = 1;
 char keypiece = 48;
 int check = 0;
 int value = 0;
@@ -143,7 +143,10 @@ void update(double dt)
 		 break;
 	 case S_GAME: gameplay(); // gameplay logic when we are in the game
 		break;
+	 case S_ENDGAME: Endgame();
+		 break;
 	 case S_INVENTORY: processUserInput(); //key updates here -SY
+		 break;
 	}
 }
 //--------------------------------------------------------------
@@ -165,6 +168,8 @@ void render()
 		 break;
 	 case S_GAME: renderGame();
 		break;
+	 case S_ENDGAME: renderEndgame();
+		 break;
 	 case S_INVENTORY: loadInv();
 		 renderInv();
 		 break;
