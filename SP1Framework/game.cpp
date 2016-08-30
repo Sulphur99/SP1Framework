@@ -29,7 +29,7 @@ int map = 0;
 bool load = false;
 char grid[80][26];
 int memory;
-int key = 2;
+int key = 0;
 char keypiece = 48;
 int check = 0;
 int value = 0;
@@ -68,6 +68,9 @@ void init(void)
 	g_sChar.m_bActive = true;
 	// sets the width, height and the font name to use in the console
 	g_Console.setConsoleFont(0, 16, L"Raster");
+
+	//PlaySound(TEXT("Music/Gundam Unicorn - MOBILE SUIT.mp3"), NULL, SND_SYNC |SND_LOOP | SND_ASYNC);
+
 }
 
 //--------------------------------------------------------------
@@ -383,6 +386,15 @@ void renderMap()
 				{
 					grid[x][y] = ' ';
 				}
+				if (grid[x][y] == 'S')
+				{
+					grid[x][y] = (char)241;
+				}
+				if (grid[x][y] == 't')
+				{
+					grid[x][y] = (char)194;
+				}
+
 				c.X = x;
 				g_Console.writeToBuffer(c, grid[x][y]);
 			}
