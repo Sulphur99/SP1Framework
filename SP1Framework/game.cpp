@@ -359,7 +359,8 @@ void renderMap()
 	MaxY = g_sChar.m_cLocation.Y + 3;
 
 	if (map != 14)
-	{
+	{	
+		WORD mapColor = 0x89;
 		if (g_sChar.m_cLocation.X <= 4)
 		{
 			MinX = 0;
@@ -394,7 +395,7 @@ void renderMap()
 					grid[x][y] = ' ';
 				}
 				c.X = x;
-				g_Console.writeToBuffer(c, grid[x][y]);
+				g_Console.writeToBuffer(c, grid[x][y], mapColor);
 			}
 		}
 	}
@@ -440,7 +441,7 @@ void renderCharacter()
 	{
 		charColor = 0x0A;
 	}
-	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);
+	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);//
 }
 
 void renderFramerate()
