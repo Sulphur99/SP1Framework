@@ -41,16 +41,12 @@ void Mapping(int map)
 			break;
 		case 13: read.open("Level3.8.txt");
 			break;
-		case 14: read.open("WIN_SCREEN.txt");
-			break;
 		}
 		load = false;
 	}
 	
 	if (read.is_open())
-	{
-		if (map != 14)
-		{
+	{		
 			while (height < 20)
 			{
 				while (width < 80)
@@ -62,20 +58,5 @@ void Mapping(int map)
 				width = 0;
 			}
 			read.close();
-		}
-		else
-		{
-			while (height < 25)
-			{
-				while (width < 80)
-				{
-					read >> grid[width][height];
-					width++;
-				}
-				height++;
-				width = 0;
-			}
-			read.close();
-		}
 	}
 }

@@ -66,6 +66,9 @@
     <ClCompile Include="reset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Endgame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\console.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="reset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Endgame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,6 +8,7 @@
 #include "Puzzles.h"
 #include "Mainmenu.h"
 #include "reset.h"
+#include "Endgame.h"
 
 extern CStopWatch g_swTimer;
 extern bool g_bQuitGame;
@@ -34,11 +35,12 @@ enum EKEYS
 enum EGAMESTATES
 {
     S_SPLASHSCREEN,
-	S_MAINMENU,	
+	S_MAINMENU,
 	S_CONTROLSPAGE,
     S_GAME,
     S_COUNT,
 	S_INVENTORY,
+	S_ENDGAME,
 };
 
 // struct for the game character
