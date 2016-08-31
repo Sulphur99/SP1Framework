@@ -90,7 +90,6 @@
     <ClCompile Include="Mapping.cpp" />
     <ClCompile Include="MovableObj.cpp" />
     <ClCompile Include="Puzzles.cpp" />
-    <ClCompile Include="reset.cpp" />
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -106,7 +105,6 @@
     <ClInclude Include="Mapping.h" />
     <ClInclude Include="MovableObj.h" />
     <ClInclude Include="Puzzles.h" />
-    <ClInclude Include="reset.h" />
     <ClInclude Include="Transition.h" />
   </ItemGroup>
   <ItemGroup>
