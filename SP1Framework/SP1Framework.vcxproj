@@ -102,7 +102,6 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="Interact.h" />
     <ClInclude Include="Inventory.h" />
-    <ClInclude Include="LoadMap.h" />
     <ClInclude Include="Mainmenu.h" />
     <ClInclude Include="Mapping.h" />
     <ClInclude Include="MovableObj.h" />
