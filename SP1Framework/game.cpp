@@ -36,6 +36,8 @@ char keypiece = 48;
 int check = 0;
 int value = 0;
 int access4 = 1;
+int clear = 0;
+int activateclear = 0;
 
 //Torchlight
 int MinX;
@@ -256,6 +258,10 @@ void moveCharacter()
 }
 void processUserInput()
 {
+	bool bSomethingHappened = false;
+	if (g_dBounceTime > g_dElapsedTime)
+		return;
+
 	// quits the game if player hits the escape key
 	if (g_abKeyPressed[K_ESCAPE])
 		g_bQuitGame = true;
@@ -264,10 +270,12 @@ void processUserInput()
 		setText = false;
 		checkobj = checkinteract(map);
 		Interact(checkobj);
+		bSomethingHappened = true;
 	}
 	if (g_abKeyPressed[K_R])
 	{
 		reset();
+		bSomethingHappened = true;
 	}
 	switch (g_eGameState)
 	{
@@ -275,14 +283,21 @@ void processUserInput()
 			if (g_abKeyPressed[K_I])
 			{
 				g_eGameState = S_INVENTORY;
+				bSomethingHappened = true;
 			}
 			break;
 		case S_INVENTORY:
 			if (g_abKeyPressed[K_J])
 			{
 				g_eGameState = S_GAME;
+				bSomethingHappened = true;
 			}
 			break;
+	}
+	if (bSomethingHappened)
+	{
+		// set the bounce time to some time in the future to prevent accidental triggers
+		g_dBounceTime = g_dElapsedTime + 0.125; // 125ms should be enough
 	}
 }
 
