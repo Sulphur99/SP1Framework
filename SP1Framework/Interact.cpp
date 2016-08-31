@@ -142,28 +142,6 @@ int checkinteract(int g_number)
 	{
 		return 6;
 	}
-
-	/*if (txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 2] == 'Ryan')
-	{
-	return 5;
-	}
-
-	if (txt[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y - 1] == 'Ryan')
-	{
-	return 5;
-	}
-
-	if (txt[g_sChar.mLocation.X][g_sChar.m_cLocation.Y] == 'Ryan')
-	{
-	return 5;
-	}
-
-	if (txt[g_sChar.mLocation.X + 1][g_sChar.m_cLocation.Y - 1] == 'Ryan')
-	{
-	return 5;
-	}
-	*/
-
 	else
 	{
 		return 0;
@@ -242,98 +220,51 @@ void renderFeed()
 
 	if (Activity_feed == 4)
 	{
-		if (map == 1)
+		switch (map)
 		{
-			text = "You found a chest! The chest contains a shimmering key.";
-			g_Console.writeToBuffer(c, text, 0x02);
+		case 1: text = "You found a chest! The chest contains a shimmering key.";
+			break;
+		case 3: text = "You found a chest! A key piece lies within.";
+			break;
+		case 4: text = "You found a chest! A second key piece lies within.";
+			break;
+		case 6: text = "You found a chest! It contains a key piece.";
+			break;
+		case 8: text = "You found a chest! A key piece shines from within.";
+			break;
+		case 12: text = "You found a chest! A key piece lies within.";
+			break;
+		case 13: text = "You found a chest! The chest has a key piece.";
+			break;
+		default: text = " ";
 		}
-
-		if (map == 3)
-		{
-			text = "You found a chest! A key piece lies within.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
-		if (map == 4)
-		{
-			text = "You found a chest! A second key piece lies within.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
-		if (map == 6)
-		{
-			text = "You found a chest! It contains a key piece.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
-		if (map == 8)
-		{
-			text = "You found a chest! A key piece shines from within.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
-		if (map == 12)
-		{
-			text = "You found a chest! A keypiece lies within.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
-		if (map == 13)
-		{
-			text = "You found a chest! The chest has a keypiece.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
+		g_Console.writeToBuffer(c, text, 0x02);
 	}
 	if (Activity_feed == 5)
 	{
-		if (map == 1)
+		switch (map)
 		{
-			text = "You can push boulders by walking up to them.";
-			g_Console.writeToBuffer(c, text, 0x02);
+		case 1: text = "You can push boulders by walking up to them.";
+			break;
+		case 3: text = "One of these chests are not like the others...";
+			break;
+		case 7: text = "Not all endeavours are rewarded.";
+			break;
+		case 8: text = "Only one who understands balance shall find the way.";
+			break;
+		case 10: text = "Greed will only waste your time.";
+			break;
+		case 11: text = "Working hard will not always bear fruit.";
+			break;
+		default: text = " ";
 		}
-		
-		if (map == 3)
-		{
-			text = "One of these chests are not like the others...";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-		
-		if (map == 7)
-		{
-			text = "Not all endeavours are rewarded.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
-		if (map == 8)
-		{
-			text = "Only one who understands balance shall find the way.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
-		if (map == 10)
-		{
-			text = "Greed will only waste your time.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
-
-		if (map == 11)
-		{
-			text = "Working hard will not always bear fruit.";
-			g_Console.writeToBuffer(c, text, 0x02);
-		}
+		g_Console.writeToBuffer(c, text, 0x02);
 	}
 
 	if (Activity_feed == 6)
 	{
-		text = "The chest was empty.";
+		text = "You found a chest! But the chest is empty....";
 		g_Console.writeToBuffer(c, text, 0x02);
 	}
 
-	/*if (Activity_feed == 5)
-	{
-	text = "The chest is empty. Maybe because you took whatever's in it.";
-	g_Console.writeToBuffer(c, text, 0x02);
-	}
-	*/
 }
