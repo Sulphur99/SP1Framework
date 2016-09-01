@@ -10,13 +10,18 @@ extern bool setText;
 extern int key;
 extern int map;
 extern int clear;
+<<<<<<< HEAD
+=======
+extern int activateclear;
+extern double g_dBounceTime;
+
+>>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 
 int checkinteract(int g_number)
 {
 	int height = 0;
 	int width = 0;
 	ifstream file;
-	char txt[100][100];
 
 	/*if (g_sCha.Key != 0)
 	{
@@ -72,6 +77,7 @@ int checkinteract(int g_number)
 	{
 		return 6;
 	}
+<<<<<<< HEAD
 
 	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == (char)194)
 	{
@@ -82,7 +88,18 @@ int checkinteract(int g_number)
 	{
 		return 6;
 	}
+=======
+>>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 
+	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == (char)194)
+	{
+		return 6;
+	}
+
+	if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == (char)194)
+	{
+		return 6;
+	}
 	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'T')
 	{
 		if (clear == 1)
@@ -195,14 +212,15 @@ void renderFeed()
 	c.Y = 21;
 	string text;
 	int textSize;
+	double newTime = g_dElapsedTime + 3.0;
 
 	if (Activity_feed == 1 && !setText)
 	{
 		text = "Curses! A wall blocks your way.";
 		textSize = sizeof(text);
-		double newTime = g_dElapsedTime + 1.0;
 
 		g_Console.writeToBuffer(c, text, 0x02);
+		
 
 		if (g_dElapsedTime > newTime)
 		{
@@ -238,7 +256,7 @@ void renderFeed()
 	{
 		text = "The door's locked.";
 		textSize = sizeof(text);
-		int newTime = g_dElapsedTime + 1.0;
+		double newTime = g_dElapsedTime + 1.0;
 
 		g_Console.writeToBuffer(c, text, 0x02);
 
@@ -281,7 +299,11 @@ void renderFeed()
 		{
 		case 1: text = "You can push boulders by walking up to them.";
 			break;
+<<<<<<< HEAD
 		case 3: text = "Only one contain what you are looking for...";
+=======
+		case 3: text = "Only one contains what you are looking for...";
+>>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 			break;
 		case 7: text = "Not all endeavours are rewarded.";
 			break;

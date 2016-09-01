@@ -126,9 +126,20 @@ void rendermenu()
 		g_Console.writeToBuffer(c, "Arrow keys to move");
 		c.Y = 16;
 		g_Console.writeToBuffer(c, "Z to interact");
+<<<<<<< HEAD
 		c.Y = 17;
 		g_Console.writeToBuffer(c, "I to open and close inventory");
 		c.Y = 18;
+=======
+		c.X = 24;
+		c.Y = 20;
+		g_Console.writeToBuffer(c, "I to open inventory");
+		c.X = 24;
+		c.Y = 21;
+		g_Console.writeToBuffer(c, "I to close inventory");
+		c.X = 24;
+		c.Y = 22;
+>>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 		g_Console.writeToBuffer(c, "K to combine key pieces in inventory");
 	}
 	else if (g_sSelector.c_cLocation.Y != 12)

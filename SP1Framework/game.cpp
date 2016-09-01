@@ -37,8 +37,12 @@ int check = 0;
 int value = 0;
 int access4 = 1;
 int clear = 0;
+<<<<<<< HEAD
 
 extern bool pull;
+=======
+int activateclear = 0;
+>>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 
 //Torchlight
 int MinX;
@@ -116,6 +120,7 @@ void getInput(void)
 	g_abKeyPressed[K_I] = isKeyPressed(0x49);//I
 	g_abKeyPressed[K_J] = isKeyPressed(0x4A);//J
 	g_abKeyPressed[K_K] = isKeyPressed(0x4B);//K
+	g_abKeyPressed[K_R] = isKeyPressed(0x52);//R
 	g_abKeyPressed[K_ENTER] = isKeyPressed(0x0D);//Enter
 }
 
@@ -261,6 +266,10 @@ void processUserInput()
 	bool bSomethingHappened = false;
 	if (g_dBounceTime > g_dElapsedTime)
 		return;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 	// quits the game if player hits the escape key
 	if (g_abKeyPressed[K_ESCAPE])
 		g_bQuitGame = true;
@@ -269,18 +278,19 @@ void processUserInput()
 		setText = false;
 		checkobj = checkinteract(map);
 		Interact(checkobj);
+<<<<<<< HEAD
 		if (Activity_feed == 4)
 		{
 			bSomethingHappened = true;
 		}
+=======
+		bSomethingHappened = true;
+>>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 	}
-	if (!g_sChar.m_bActive)
+	if (g_abKeyPressed[K_R])
 	{
-		pull = true;
-	}
-	else
-	{
-		pull = false;
+		reset();
+		bSomethingHappened = true;
 	}
 	switch (g_eGameState)
 	{
@@ -347,7 +357,10 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
 	renderMap();// renders the map to the buffer first
-	renderCharacter(); // renders the character into the buffer
+	if (map != 14)
+	{
+		renderCharacter(); // renders the character into the buffer
+	}
 	renderChests();
 	renderFeed();
 }
@@ -389,7 +402,9 @@ void renderMap()
 	MaxX = g_sChar.m_cLocation.X + 5;
 	MinY = g_sChar.m_cLocation.Y - 2;
 	MaxY = g_sChar.m_cLocation.Y + 3;
-	
+
+	if (map != 14)
+	{	
 		WORD mapColor = 0x89;
 		if (g_sChar.m_cLocation.X <= 4)
 		{
@@ -437,7 +452,31 @@ void renderMap()
 				g_Console.writeToBuffer(c, grid[x][y], mapColor);
 			}
 		}
-
+	}
+	else
+	{
+		for (int y = 0; y < 26; y++)
+		{
+			c.Y = y;
+			for (int x = 0; x < 80; x++)
+			{
+				if (grid[x][y] == '-')
+				{
+					grid[x][y] = (char)176;
+				}
+				if (grid[x][y] == 'W')
+				{
+					grid[x][y] = (char)178;
+				}
+				if (grid[x][y] == '\n')
+				{
+					grid[x][y] = ' ';
+				}
+				c.X = x;
+				g_Console.writeToBuffer(c, grid[x][y]);
+			}
+		}
+	}
 	/*COORD c;
 	for (int i = 0; i < 12; ++i)
 	{

@@ -7,6 +7,7 @@
 #include "Interact.h"
 #include "Puzzles.h"
 #include "Mainmenu.h"
+#include "reset.h"
 #include "Endgame.h"
 
 extern CStopWatch g_swTimer;
@@ -25,6 +26,7 @@ enum EKEYS
 	K_J,
 	K_K,
 	K_Z,
+	K_R,
 	K_ENTER,
 	K_COUNT
 };
