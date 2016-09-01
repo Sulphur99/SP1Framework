@@ -37,6 +37,7 @@ int value = 0;
 int access4 = 1;
 int clear = 0;
 
+//Pull/push objects
 extern bool pull;
 
 //Torchlight
@@ -180,7 +181,7 @@ void render()
 		renderInv();
 		break;
 	}
-	renderFramerate();  // renders debug information, frame rate, elapsed time, etc
+	//renderFramerate();  // renders debug information, frame rate, elapsed time, etc
 	renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
 }
 
@@ -531,7 +532,7 @@ void renderCharacter()
 	{
 		charColor = 0x0A;
 	}
-	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);//
+	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);
 }
 
 void renderFramerate()
