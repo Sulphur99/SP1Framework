@@ -16,12 +16,20 @@ int checkMobj()
 			{
 				return 5;
 			}
+			else
+			{
+				return 0;
+			}
 		}
 		else if (g_abKeyPressed[K_LEFT] && g_sChar.m_cLocation.X > 0)
 		{
 			if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'O' && grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == (char)176)
 			{
 				return 6;
+			}
+			else
+			{
+				return 0;
 			}
 		}
 		else if (g_abKeyPressed[K_DOWN] && g_sChar.m_cLocation.Y < g_Console.getConsoleSize().Y - 1)
@@ -30,12 +38,20 @@ int checkMobj()
 			{
 				return 7;
 			}
+			else
+			{
+				return 0;
+			}
 		}
 		else if (g_abKeyPressed[K_RIGHT] && g_sChar.m_cLocation.X < g_Console.getConsoleSize().X - 1)
 		{
 			if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'O' && grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == (char)176)
 			{
 				return 8;
+			}
+			else
+			{
+				return 0;
 			}
 		}
 		else
@@ -51,12 +67,20 @@ int checkMobj()
 			{
 				return 1;
 			}
+			else
+			{
+				return 0;
+			}
 		}
 		else if (g_abKeyPressed[K_LEFT] && g_sChar.m_cLocation.X > 0)
 		{
 			if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'O' && grid[g_sChar.m_cLocation.X - 2][g_sChar.m_cLocation.Y] == (char)176)
 			{
 				return 2;
+			}
+			else
+			{
+				return 0;
 			}
 		}
 		else if (g_abKeyPressed[K_DOWN] && g_sChar.m_cLocation.Y < g_Console.getConsoleSize().Y - 1)
@@ -65,12 +89,20 @@ int checkMobj()
 			{
 				return 3;
 			}
+			else
+			{
+				return 0;
+			}
 		}
 		else if (g_abKeyPressed[K_RIGHT] && g_sChar.m_cLocation.X < g_Console.getConsoleSize().X - 1)
 		{
 			if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'O' && grid[g_sChar.m_cLocation.X + 2][g_sChar.m_cLocation.Y] == (char)176)
 			{
 				return 4;
+			}
+			else
+			{
+				return 0;
 			}
 		}
 		else
@@ -108,24 +140,20 @@ void MoveObj(int checkMobj)
 	{
 		grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] = (char)176;
 		grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] = 'O';
-		g_sChar.m_cLocation.Y+2;
 	}
 	if (obj == 6)
 	{
 		grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] = (char)176;
 		grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] = 'O';
-		g_sChar.m_cLocation.X + 2;
 	}
 	if (obj == 7)
 	{
 		grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] = (char)176;
 		grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] = 'O';
-		g_sChar.m_cLocation.Y - 2;
 	}
 	if (obj == 8)
 	{
 		grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] = (char)176;
 		grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y] = 'O';
-		g_sChar.m_cLocation.X - 2;
 	}
 }

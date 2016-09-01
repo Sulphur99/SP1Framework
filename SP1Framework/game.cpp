@@ -36,6 +36,7 @@ char keypiece = 48;
 int check = 0;
 int value = 0;
 int access4 = 1;
+int clear = 0;
 
 extern bool pull;
 
@@ -257,6 +258,9 @@ void moveCharacter()
 }
 void processUserInput()
 {
+	bool bSomethingHappened = false;
+	if (g_dBounceTime > g_dElapsedTime)
+		return;
 	// quits the game if player hits the escape key
 	if (g_abKeyPressed[K_ESCAPE])
 		g_bQuitGame = true;
@@ -265,6 +269,10 @@ void processUserInput()
 		setText = false;
 		checkobj = checkinteract(map);
 		Interact(checkobj);
+		if (Activity_feed == 4)
+		{
+			bSomethingHappened = true;
+		}
 	}
 	if (!g_sChar.m_bActive)
 	{
@@ -280,14 +288,21 @@ void processUserInput()
 			if (g_abKeyPressed[K_I])
 			{
 				g_eGameState = S_INVENTORY;
+				bSomethingHappened = true;
 			}
 			break;
 		case S_INVENTORY:
-			if (g_abKeyPressed[K_J])
+			if (g_abKeyPressed[K_I] && g_eGameState == S_INVENTORY)
 			{
 				g_eGameState = S_GAME;
+				bSomethingHappened = true;
 			}
 			break;
+	}
+	if (bSomethingHappened)
+	{
+		// set the bounce time to some time in the future to prevent accidental triggers
+		g_dBounceTime = g_dElapsedTime + 0.125; // 125ms should be enough
 	}
 }
 
@@ -441,7 +456,7 @@ void renderCharacter()
 	{
 		charColor = 0x0A;
 	}
-	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);//
+	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);
 }
 
 void renderFramerate()

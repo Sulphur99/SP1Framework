@@ -9,6 +9,7 @@ extern double g_dElapsedTime;
 extern bool setText;
 extern int key;
 extern int map;
+extern int clear;
 
 int checkinteract(int g_number)
 {
@@ -17,31 +18,11 @@ int checkinteract(int g_number)
 	ifstream file;
 	char txt[100][100];
 
-	/*if (g_sChar.Key != 0)
+	/*if (g_sCha.Key != 0)
 	{
 	g_sChar.Key--;
 	txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] = ' ';
 	}*/
-
-	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == (char)178)//up
-	{
-		return 1;
-	}
-
-	if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == (char)178) //left
-	{
-		return 1;
-	}
-
-	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == (char)178)//down
-	{
-		return 1;
-	}
-
-	if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == (char)178)//right
-	{
-		return 1;
-	}
 
 	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'P')
 	{
@@ -82,24 +63,79 @@ int checkinteract(int g_number)
 	{
 		return 3;
 	}
+	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == (char)194)
+	{
+		return 6;
+	}
+
+	if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == (char)194)
+	{
+		return 6;
+	}
+
+	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == (char)194)
+	{
+		return 6;
+	}
+
+	if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == (char)194)
+	{
+		return 6;
+	}
 
 	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'T')
 	{
+		if (clear == 1)
+		{
+			grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] = 't';
+			clear = 0;
+		}
+		if (clear == 0)
+		{
+			clear = 1;
+		}
 		return 4;
 	}
 
 	if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == 'T')
 	{
+		if (clear == 1)
+		{
+			grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] = 't';
+			clear = 0;
+		}
+		if (clear == 0)
+		{
+			clear = 1;
+		}
 		return 4;
 	}
 
 	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == 'T')
 	{
+		if (clear == 1)
+		{
+			grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] = 't';
+			clear = 0;
+		}
+		if (clear == 0)
+		{
+			clear = 1;
+		}
 		return 4;
 	}
 
 	if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == 'T')
 	{
+		if (clear == 1)
+		{
+			grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] = 't';
+			clear = 0;
+		}
+		if (clear == 0)
+		{
+			clear = 1;
+		}
 		return 4;
 	}
 	
@@ -122,25 +158,24 @@ int checkinteract(int g_number)
 	{
 		return 5;
 	}
-
-	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == (char)194)
+	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == (char)178)//up
 	{
-		return 6;
+		return 1;
 	}
 
-	if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == (char)194)
+	if (grid[g_sChar.m_cLocation.X - 1][g_sChar.m_cLocation.Y] == (char)178) //left
 	{
-		return 6;
+		return 1;
 	}
 
-	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == (char)194)
+	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y + 1] == (char)178)//down
 	{
-		return 6;
+		return 1;
 	}
 
-	if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == (char)194)
+	if (grid[g_sChar.m_cLocation.X + 1][g_sChar.m_cLocation.Y] == (char)178)//right
 	{
-		return 6;
+		return 1;
 	}
 	else
 	{
@@ -226,7 +261,7 @@ void renderFeed()
 			break;
 		case 3: text = "You found a chest! A key piece lies within.";
 			break;
-		case 4: text = "You found a chest! A second key piece lies within.";
+		case 4: text = "You found a chest! A key piece lies within.";
 			break;
 		case 6: text = "You found a chest! It contains a key piece.";
 			break;
@@ -246,11 +281,11 @@ void renderFeed()
 		{
 		case 1: text = "You can push boulders by walking up to them.";
 			break;
-		case 3: text = "One of these chests are not like the others...";
+		case 3: text = "Only one contain what you are looking for...";
 			break;
 		case 7: text = "Not all endeavours are rewarded.";
 			break;
-		case 8: text = "Only one who understands balance shall find the way.";
+		case 8: text = "The map must be symmetrical.";
 			break;
 		case 10: text = "Greed will only waste your time.";
 			break;

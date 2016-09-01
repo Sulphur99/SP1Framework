@@ -106,8 +106,8 @@ void rendermenu()
 		c.X = 32;
 		c.Y = 11;
 		g_Console.writeToBuffer(c, "STARTGAME", 0x0C);
-		c.X = 24;
-		c.Y = 18;
+		c.X = 29;
+		c.Y = 15;
 		g_Console.writeToBuffer(c, "Play the game");
 	}
 	else if (g_sSelector.c_cLocation.Y != 11)
@@ -121,20 +121,14 @@ void rendermenu()
 		c.X = 32;
 		c.Y = 12;
 		g_Console.writeToBuffer(c, "CONTROLS", 0x0C);
-		c.X = 24;
-		c.Y = 18;
-		g_Console.writeToBuffer(c, "arrow keys to move");
-		c.X = 24;
-		c.Y = 19;
+		c.X = 29;
+		c.Y = 15;
+		g_Console.writeToBuffer(c, "Arrow keys to move");
+		c.Y = 16;
 		g_Console.writeToBuffer(c, "Z to interact");
-		c.X = 24;
-		c.Y = 20;
-		g_Console.writeToBuffer(c, "I to open inventory");
-		c.X = 24;
-		c.Y = 21;
-		g_Console.writeToBuffer(c, "J to close inventory");
-		c.X = 24;
-		c.Y = 22;
+		c.Y = 17;
+		g_Console.writeToBuffer(c, "I to open and close inventory");
+		c.Y = 18;
 		g_Console.writeToBuffer(c, "K to combine key pieces in inventory");
 	}
 	else if (g_sSelector.c_cLocation.Y != 12)
@@ -148,8 +142,8 @@ void rendermenu()
 		c.X = 32;
 		c.Y = 13;
 		g_Console.writeToBuffer(c, "QUIT", 0x0C);
-		c.X = 24;
-		c.Y = 18;
+		c.X = 29;
+		c.Y = 15;
 		g_Console.writeToBuffer(c, "Quit the game");
 	}
 	else if (g_sSelector.c_cLocation.Y != 13)
