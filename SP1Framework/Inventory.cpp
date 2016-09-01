@@ -65,7 +65,7 @@ void loadInv()
 		{
 			if (grid2[x][y] == '-')
 			{
-				grid2[x][y] = (char)176;
+				grid2[x][y] = ' ';
 			}
 			if (grid2[x][y] == 'W')
 			{
@@ -97,7 +97,7 @@ void renderInv()
 				file >> grid3[width][height];
 				if (grid3[width][height] == '-')
 				{
-					grid3[width][height] = (char)176;
+					grid3[width][height] = ' ';
 				}
 				width++;
 			}

@@ -20,7 +20,6 @@ bool    g_abKeyPressed[K_COUNT];
 extern int Activity_feed;
 int checkobj;
 bool setText = false;
-ifstream read;
 
 // Game specific variables here
 SGameChar   g_sChar;
@@ -31,7 +30,7 @@ int map = 0;
 bool load = false;
 char grid[80][26];
 int memory;
-int key = 0;
+int key = 2;
 char keypiece = 48;
 int check = 0;
 int value = 0;
@@ -341,7 +340,7 @@ void renderSplashScreen()  // renders the splash screen
 	g_Console.writeToBuffer(c, "\\    Y    /|  |  /|   |  \\ |  |  \\  ___/  |  | \\/                  ", 0xA);
 	c.Y += 1;
 	g_Console.writeToBuffer(c, " \\___|_  / |____/ |___|  / |__|   \\___  > |__|                     ", 0xB);
-	c.Y += 1;
+	c.Y +=  1;
 	g_Console.writeToBuffer(c, "       \\/              \\/             \\/                           ", 0xC);
 
 }
@@ -349,10 +348,7 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
 	renderMap();// renders the map to the buffer first
-	if (map != 14)
-	{
-		renderCharacter(); // renders the character into the buffer
-	}
+	renderCharacter(); // renders the character into the buffer
 	renderChests();
 	renderFeed();
 }
@@ -376,41 +372,51 @@ void renderMap()
 	{
 		c.Y = y + 20;
 		for (int x = 0; x < 80; x++)
-		{
-			if (y == 0)
+		{ 
+			 if (y == 0)
 			{
 				txt[x][y] = (char)178;
 			}
 			else
 			{
-				txt[x][y] = (char)176;
+				txt[x][y] = ' ';
 			}
 			c.X = x;
 			g_Console.writeToBuffer(c, txt[x][y]);
 		}
 	}
 
-	MinX = g_sChar.m_cLocation.X - 4;
-	MaxX = g_sChar.m_cLocation.X + 5;
-	MinY = g_sChar.m_cLocation.Y - 2;
-	MaxY = g_sChar.m_cLocation.Y + 3;
+	MinX = g_sChar.m_cLocation.X - 6;
+	MaxX = g_sChar.m_cLocation.X + 7;
+	MinY = g_sChar.m_cLocation.Y - 3;
+	MaxY = g_sChar.m_cLocation.Y + 4;
+
+	WORD mapColor;
 
 	if (map != 14)
 	{
-		WORD mapColor = 0x89;
-		if (g_sChar.m_cLocation.X <= 4)
+		if (map == 5 || map == 6 || map == 7 || map == 8 || map == 9 || map == 10 || map == 11 || map == 12 || map == 13)
+		{
+			mapColor = 0xC;
+		}
+		else
+		{
+			mapColor = 0x1A;
+		}
+		
+		if (g_sChar.m_cLocation.X <= 6)
 		{
 			MinX = 0;
 		}
-		if (g_sChar.m_cLocation.Y <= 2)
+		if (g_sChar.m_cLocation.Y <= 3)
 		{
 			MinY = 0;
 		}
-		if (g_sChar.m_cLocation.X >= 78)
+		if (g_sChar.m_cLocation.X >= 76)
 		{
 			MaxX = 80;
 		}
-		if (g_sChar.m_cLocation.Y >= 18)
+		if (g_sChar.m_cLocation.Y >= 16)
 		{
 			MaxY = 20;
 		}
@@ -441,7 +447,23 @@ void renderMap()
 				}
 
 				c.X = x;
-				g_Console.writeToBuffer(c, grid[x][y], mapColor);
+				if (grid[x][y] == 'D')
+				{
+					g_Console.writeToBuffer(c, grid[x][y], 0x08);
+				}
+				else if (grid[x][y] == 'O')
+				{
+					g_Console.writeToBuffer(c, grid[x][y], 0x02);
+				}
+				else if (grid[x][y] == (char)241)
+				{
+					g_Console.writeToBuffer(c, grid[x][y], 0x0B);
+				}
+				else
+				{
+					g_Console.writeToBuffer(c, grid[x][y], mapColor);
+				}
+				
 			}
 		}
 	}

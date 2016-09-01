@@ -81,7 +81,7 @@ void rendermenu()
 		{
 			if (Main[x][y] == '-')
 			{
-				Main[x][y] = (char)176;
+				Main[x][y] = ' ';
 			}
 			if (Main[x][y] == 'W')
 			{
@@ -96,17 +96,29 @@ void rendermenu()
 				Main[x][y] = ' ';
 			}
 			c.X = x;
-			g_Console.writeToBuffer(c, Main[x][y]);
+			if (Main[x][y] == (char)178)
+			{
+				g_Console.writeToBuffer(c, Main[x][y], 0x0E);
+			}
+			else
+			{
+				g_Console.writeToBuffer(c, Main[x][y]);
+			}
 		}
 	}
 	renderSelector();
+	c.X = 26;
+	c.Y = 22;
+	g_Console.writeToBuffer(c, "<arrow keys> to move");
+	c.Y = 23;
+	g_Console.writeToBuffer(c, "<enter> to select");
 
 	if (g_sSelector.c_cLocation.Y == 11)
 	{
 		c.X = 32;
 		c.Y = 11;
 		g_Console.writeToBuffer(c, "STARTGAME", 0x0C);
-		c.X = 24;
+		c.X = 29;
 		c.Y = 18;
 		g_Console.writeToBuffer(c, "Play the game");
 	}
@@ -121,20 +133,14 @@ void rendermenu()
 		c.X = 32;
 		c.Y = 12;
 		g_Console.writeToBuffer(c, "CONTROLS", 0x0C);
-		c.X = 24;
-		c.Y = 18;
+		c.X = 29;
+		c.Y = 15;
 		g_Console.writeToBuffer(c, "arrow keys to move");
-		c.X = 24;
-		c.Y = 19;
+		c.Y = 16;
 		g_Console.writeToBuffer(c, "Z to interact");
-		c.X = 24;
-		c.Y = 20;
+		c.Y = 17;
 		g_Console.writeToBuffer(c, "I to open inventory");
-		c.X = 24;
-		c.Y = 21;
-		g_Console.writeToBuffer(c, "I to close inventory");
-		c.X = 24;
-		c.Y = 22;
+		c.Y = 18;
 		g_Console.writeToBuffer(c, "K to combine key pieces in inventory");
 	}
 	else if (g_sSelector.c_cLocation.Y != 12)
@@ -148,7 +154,7 @@ void rendermenu()
 		c.X = 32;
 		c.Y = 13;
 		g_Console.writeToBuffer(c, "QUIT", 0x0C);
-		c.X = 24;
+		c.X = 29;
 		c.Y = 18;
 		g_Console.writeToBuffer(c, "Quit the game");
 	}
