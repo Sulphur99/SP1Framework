@@ -7,6 +7,7 @@
 #include "Interact.h"
 #include "Puzzles.h"
 #include "Mainmenu.h"
+#include "reset.h"
 #include "Endgame.h"
 
 extern CStopWatch g_swTimer;

@@ -17,6 +17,13 @@ int checkinteract(int g_number)
 	int height = 0;
 	int width = 0;
 	ifstream file;
+	char txt[100][100];
+
+	/*if (g_sCha.Key != 0)
+	{
+	g_sChar.Key--;
+	txt[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] = ' ';
+	}*/
 
 	if (grid[g_sChar.m_cLocation.X][g_sChar.m_cLocation.Y - 1] == 'P')
 	{

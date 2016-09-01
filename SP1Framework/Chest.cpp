@@ -13,7 +13,6 @@ int access = 1;
 int access2 = 1;
 int access3 = 1;
 extern int access4;
-
 void renderChests()
 {
 
