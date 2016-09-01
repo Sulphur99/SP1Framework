@@ -11,7 +11,7 @@ WWWWWWWW-WWWWWWWOWWWWWWWWWWWWWWWWWWWWWW-WWWWWWWWWWOWWWWWWWWW-WWWW----OW---OO---W
 W-------O---------W--------O------------------W--------W--------W----OO--------D
 WWWWW-WWWWWW-WWWWWWWW-WWWWWWWWW-WWWWWWWWWWWWWWW--------W--------W----OW--------W
 W--------W--------W----O---W--------W---------W--------O--------WWW-WWWWWW--WWWW
-W--------W--------W--OO----W------------------W--------W--------W-----W--------W 
+W-----S--W--------W--OO----W------------------W--------W--------W-----W--------W 
 W--------W--------W-----O--W--------W---------WWWW-WWWWW--------O-----W--------W
 WWWW-WWWWWWWWWWWWWWWWWWWW-WWWWWWWWWWWWWWW-WWWWW--------W--------W-----W--------W
 W--------W--------W--------W--------W-----O------------WWWWWWWW-WWW-WWWWWWWWW-WW

@@ -279,17 +279,22 @@ void renderFeed()
 	{
 		switch (map)
 		{
-		case 1: text = "You can push boulders by walking up to them.";
+		case 1: text = "You can push obstacles by walking towards them.";
 			break;
-		case 3: text = "Only one contain what you are looking for...";
+		case 2: text = "You can pull obstacles by pressing spacebar and walking away from them.";
+			break;
+		case 3: text = "Only one contains what you are looking for...";
 			break;
 		case 7: text = "Not all endeavours are rewarded.";
 			break;
-		case 8: text = "The map must be symmetrical.";
+		case 8: text = "When both sides are the same, you shall find your way.";
 			break;
 		case 10: text = "Greed will only waste your time.";
 			break;
 		case 11: text = "Working hard will not always bear fruit.";
+			break;
+		case 12: text = "What has been solved once, can be solved again."
+						"Though it may not always help you.";
 			break;
 		default: text = " ";
 		}
