@@ -10,6 +10,7 @@ extern bool setText;
 extern int key;
 extern int map;
 extern int clear;
+extern bool pull;
 
 int checkinteract(int g_number)
 {
@@ -307,4 +308,16 @@ void renderFeed()
 		g_Console.writeToBuffer(c, text, 0x02);
 	}
 
+	if (pull == true)
+	{
+		c.X = 34;
+		c.Y = 23;
+		g_Console.writeToBuffer(c, "Pull mode");
+	}
+	else
+	{
+		c.X = 34;
+		c.Y = 23;
+		g_Console.writeToBuffer(c, "Push mode");
+	}
 }

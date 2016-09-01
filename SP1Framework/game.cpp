@@ -40,6 +40,7 @@ int clear = 0;
 extern bool pull;
 
 //Torchlight
+bool g_TE = true;
 int MinX;
 int MaxX;
 int MinY;
@@ -251,6 +252,11 @@ void moveCharacter()
 		g_sChar.m_bActive = !g_sChar.m_bActive;
 		bSomethingHappened = true;
 	}
+	if (g_abKeyPressed[K_R])
+	{
+		g_TE = !g_TE;
+		bSomethingHappened = true;
+	}
 	if (bSomethingHappened)
 	{
 		// set the bounce time to some time in the future to prevent accidental triggers
@@ -354,7 +360,6 @@ void renderGame()
 }
 
 
-
 void renderMap()
 {
 	// Set up sample colours, and output shadings
@@ -393,33 +398,34 @@ void renderMap()
 
 	WORD mapColor;
 
-	if (map != 14)
+
+	if (map == 5 || map == 6 || map == 7 || map == 8 || map == 9 || map == 10 || map == 11 || map == 12 || map == 13)
 	{
-		if (map == 5 || map == 6 || map == 7 || map == 8 || map == 9 || map == 10 || map == 11 || map == 12 || map == 13)
-		{
-			mapColor = 0xC;
-		}
-		else
-		{
-			mapColor = 0x1A;
-		}
-		
-		if (g_sChar.m_cLocation.X <= 6)
-		{
-			MinX = 0;
-		}
-		if (g_sChar.m_cLocation.Y <= 3)
-		{
-			MinY = 0;
-		}
-		if (g_sChar.m_cLocation.X >= 76)
-		{
-			MaxX = 80;
-		}
-		if (g_sChar.m_cLocation.Y >= 16)
-		{
-			MaxY = 20;
-		}
+		mapColor = 0xC;
+	}
+	else
+	{
+		mapColor = 0x1A;
+	}
+
+	if (g_sChar.m_cLocation.X <= 6)
+	{
+		MinX = 0;
+	}
+	if (g_sChar.m_cLocation.Y <= 3)
+	{
+		MinY = 0;
+	}
+	if (g_sChar.m_cLocation.X >= 76)
+	{
+		MaxX = 80;
+	}
+	if (g_sChar.m_cLocation.Y >= 16)
+	{
+		MaxY = 20;
+	}
+	if (g_TE == true)
+	{
 		for (int y = MinY; y < MaxY; y++)
 		{
 			c.Y = y;
@@ -463,13 +469,13 @@ void renderMap()
 				{
 					g_Console.writeToBuffer(c, grid[x][y], mapColor);
 				}
-				
+
 			}
 		}
 	}
-	else
+	if (g_TE == false)
 	{
-		for (int y = 0; y < 26; y++)
+		for (int y = 0; y < 20; y++)
 		{
 			c.Y = y;
 			for (int x = 0; x < 80; x++)
@@ -486,19 +492,35 @@ void renderMap()
 				{
 					grid[x][y] = ' ';
 				}
+				if (grid[x][y] == 'S')
+				{
+					grid[x][y] = (char)241;
+				}
+				if (grid[x][y] == 't')
+				{
+					grid[x][y] = (char)194;
+				}
+
 				c.X = x;
-				g_Console.writeToBuffer(c, grid[x][y]);
+				if (grid[x][y] == 'D')
+				{
+					g_Console.writeToBuffer(c, grid[x][y], 0x08);
+				}
+				else if (grid[x][y] == 'O')
+				{
+					g_Console.writeToBuffer(c, grid[x][y], 0x02);
+				}
+				else if (grid[x][y] == (char)241)
+				{
+					g_Console.writeToBuffer(c, grid[x][y], 0x0B);
+				}
+				else
+				{
+					g_Console.writeToBuffer(c, grid[x][y], mapColor);
+				}
 			}
 		}
 	}
-	/*COORD c;
-	for (int i = 0; i < 12; ++i)
-	{
-	c.X = 5 * i;
-	c.Y = i + 1;
-	colour(colors[i]);
-	g_Console.writeToBuffer(c, " °±²Û", colors[i]);
-	}*/
 }
 
 void renderCharacter()
