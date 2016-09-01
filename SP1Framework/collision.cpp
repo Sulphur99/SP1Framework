@@ -8,7 +8,6 @@ extern char grid[80][26];
 
 bool collision(int g_level)
 {
-	char txt[100][100];
 	int height = 0;
 	int width = 0;
 

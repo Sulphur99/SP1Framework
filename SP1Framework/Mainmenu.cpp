@@ -107,7 +107,7 @@ void rendermenu()
 		}
 	}
 	renderSelector();
-	c.X = 26;
+	c.X = 28;
 	c.Y = 22;
 	g_Console.writeToBuffer(c, "<arrow keys> to move");
 	c.Y = 23;
@@ -135,12 +135,14 @@ void rendermenu()
 		g_Console.writeToBuffer(c, "CONTROLS", 0x0C);
 		c.X = 29;
 		c.Y = 15;
-		g_Console.writeToBuffer(c, "arrow keys to move");
+		g_Console.writeToBuffer(c, "<arrow keys> to move");
 		c.Y = 16;
-		g_Console.writeToBuffer(c, "Z to interact");
+		g_Console.writeToBuffer(c, "<spacebar> to toggle push and pull mode");
 		c.Y = 17;
-		g_Console.writeToBuffer(c, "I to open inventory");
+		g_Console.writeToBuffer(c, "Z to interact");
 		c.Y = 18;
+		g_Console.writeToBuffer(c, "I to open and close inventory");
+		c.Y = 19;
 		g_Console.writeToBuffer(c, "K to combine key pieces in inventory");
 	}
 	else if (g_sSelector.c_cLocation.Y != 12)
