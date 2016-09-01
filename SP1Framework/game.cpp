@@ -37,12 +37,8 @@ int check = 0;
 int value = 0;
 int access4 = 1;
 int clear = 0;
-<<<<<<< HEAD
 
 extern bool pull;
-=======
-int activateclear = 0;
->>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 
 //Torchlight
 int MinX;
@@ -52,6 +48,7 @@ int MaxY;
 
 // Console object
 Console g_Console(80, 25, "SP1 Framework");
+
 
 //--------------------------------------------------------------
 // Purpose  : Initialisation function
@@ -146,16 +143,16 @@ void update(double dt)
 
 	switch (g_eGameState)
 	{
-	 case S_SPLASHSCREEN: splashScreenWait(); // game logic for the splash screen
+	case S_SPLASHSCREEN: splashScreenWait(); // game logic for the splash screen
 		break;
-	 case S_MAINMENU: menu();
-		 break;
-	 case S_GAME: gameplay(); // gameplay logic when we are in the game
+	case S_MAINMENU: menu();
 		break;
-	 case S_ENDGAME: Endgame();
-		 break;
-	 case S_INVENTORY: processUserInput(); //key updates here -SY
-		 break;
+	case S_GAME: gameplay(); // gameplay logic when we are in the game
+		break;
+	case S_ENDGAME: Endgame();
+		break;
+	case S_INVENTORY: processUserInput(); //key updates here -SY
+		break;
 	}
 }
 //--------------------------------------------------------------
@@ -171,17 +168,17 @@ void render()
 	clearScreen();      // clears the current screen and draw from scratch 
 	switch (g_eGameState)
 	{
-	 case S_SPLASHSCREEN: renderSplashScreen();
+	case S_SPLASHSCREEN: renderSplashScreen();
 		break;
-	 case S_MAINMENU: rendermenu();
-		 break;
-	 case S_GAME: renderGame();
+	case S_MAINMENU: rendermenu();
 		break;
-	 case S_ENDGAME: renderEndgame();
-		 break;
-	 case S_INVENTORY: loadInv();
-		 renderInv();
-		 break;
+	case S_GAME: renderGame();
+		break;
+	case S_ENDGAME: renderEndgame();
+		break;
+	case S_INVENTORY: loadInv();
+		renderInv();
+		break;
 	}
 	renderFramerate();  // renders debug information, frame rate, elapsed time, etc
 	renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
@@ -266,10 +263,6 @@ void processUserInput()
 	bool bSomethingHappened = false;
 	if (g_dBounceTime > g_dElapsedTime)
 		return;
-<<<<<<< HEAD
-=======
-
->>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 	// quits the game if player hits the escape key
 	if (g_abKeyPressed[K_ESCAPE])
 		g_bQuitGame = true;
@@ -278,36 +271,35 @@ void processUserInput()
 		setText = false;
 		checkobj = checkinteract(map);
 		Interact(checkobj);
-<<<<<<< HEAD
 		if (Activity_feed == 4)
 		{
 			bSomethingHappened = true;
 		}
-=======
-		bSomethingHappened = true;
->>>>>>> 0c852ab1519c55b7fe7a09d1cf5d84ee538052bc
 	}
-	if (g_abKeyPressed[K_R])
+	if (!g_sChar.m_bActive)
 	{
-		reset();
-		bSomethingHappened = true;
+		pull = true;
+	}
+	else
+	{
+		pull = false;
 	}
 	switch (g_eGameState)
 	{
-		case S_GAME:
-			if (g_abKeyPressed[K_I])
-			{
-				g_eGameState = S_INVENTORY;
-				bSomethingHappened = true;
-			}
-			break;
-		case S_INVENTORY:
-			if (g_abKeyPressed[K_I] && g_eGameState == S_INVENTORY)
-			{
-				g_eGameState = S_GAME;
-				bSomethingHappened = true;
-			}
-			break;
+	case S_GAME:
+		if (g_abKeyPressed[K_I])
+		{
+			g_eGameState = S_INVENTORY;
+			bSomethingHappened = true;
+		}
+		break;
+	case S_INVENTORY:
+		if (g_abKeyPressed[K_I] && g_eGameState == S_INVENTORY)
+		{
+			g_eGameState = S_GAME;
+			bSomethingHappened = true;
+		}
+		break;
 	}
 	if (bSomethingHappened)
 	{
@@ -385,7 +377,7 @@ void renderMap()
 		c.Y = y + 20;
 		for (int x = 0; x < 80; x++)
 		{
-			if(y == 0)
+			if (y == 0)
 			{
 				txt[x][y] = (char)178;
 			}
@@ -404,7 +396,7 @@ void renderMap()
 	MaxY = g_sChar.m_cLocation.Y + 3;
 
 	if (map != 14)
-	{	
+	{
 		WORD mapColor = 0x89;
 		if (g_sChar.m_cLocation.X <= 4)
 		{
@@ -495,7 +487,7 @@ void renderCharacter()
 	{
 		charColor = 0x0A;
 	}
-	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);
+	g_Console.writeToBuffer(g_sChar.m_cLocation, (char)1, charColor);//
 }
 
 void renderFramerate()
