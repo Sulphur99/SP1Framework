@@ -30,7 +30,7 @@ int map = 0;
 bool load = false;
 char grid[80][26];
 int memory;
-int key = 2;
+int key = 0;
 char keypiece = 48;
 int check = 0;
 int value = 0;
@@ -116,7 +116,6 @@ void getInput(void)
 	g_abKeyPressed[K_SPACE] = isKeyPressed(VK_SPACE);
 	g_abKeyPressed[K_ESCAPE] = isKeyPressed(VK_ESCAPE);
 	g_abKeyPressed[K_I] = isKeyPressed(0x49);//I
-	g_abKeyPressed[K_J] = isKeyPressed(0x4A);//J
 	g_abKeyPressed[K_K] = isKeyPressed(0x4B);//K
 	g_abKeyPressed[K_R] = isKeyPressed(0x52);//R
 	g_abKeyPressed[K_ENTER] = isKeyPressed(0x0D);//Enter

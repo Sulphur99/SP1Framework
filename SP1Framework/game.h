@@ -22,7 +22,6 @@ enum EKEYS
 	K_ESCAPE,
 	K_SPACE,
 	K_I,
-	K_J,
 	K_K,
 	K_Z,
 	K_R,
