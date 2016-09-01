@@ -132,7 +132,7 @@ void rendermenu()
 		g_Console.writeToBuffer(c, "I to open inventory");
 		c.X = 24;
 		c.Y = 21;
-		g_Console.writeToBuffer(c, "J to close inventory");
+		g_Console.writeToBuffer(c, "I to close inventory");
 		c.X = 24;
 		c.Y = 22;
 		g_Console.writeToBuffer(c, "K to combine key pieces in inventory");

@@ -287,7 +287,7 @@ void processUserInput()
 			}
 			break;
 		case S_INVENTORY:
-			if (g_abKeyPressed[K_J])
+			if (g_abKeyPressed[K_I] && g_eGameState == S_INVENTORY)
 			{
 				g_eGameState = S_GAME;
 				bSomethingHappened = true;
